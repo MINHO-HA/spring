@@ -11,7 +11,7 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-	<form action="join" method="POST" name="frm" id="frm">
+	<form action="joinForm" method="POST" name="frm" id="frm">
 		<table>
 			<tr>
 				<td>아이디</td>
