@@ -1,8 +1,6 @@
 package com.name.git.controller;
 
-import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,13 +64,13 @@ public class GitController {
 		return mav;
 	}
 	
-	//로그인 처리
+	/*//로그인 처리
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView memberlogin(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
 		mav = new ModelAndView();
 		mav = gs.memberlogin(memberVO, response);
 		return mav;
-	}
+	}*/
 
 	
 }

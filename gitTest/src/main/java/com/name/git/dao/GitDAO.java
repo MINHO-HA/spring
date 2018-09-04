@@ -16,6 +16,11 @@ public class GitDAO {
 		return sqlSession.insert("Member.memberJoin", memberVO);
 	}
 
+	public MemberVO memberlogin(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

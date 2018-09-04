@@ -16,7 +16,7 @@
 			<tr>
 				<td>아이디</td>
 				<td><input type="text" name="MEM_ID">
-				<input type="button" onclick="idOverlap()" value="중복확인"></td>
+				</td>
 				
 			</tr>
 			<tr>

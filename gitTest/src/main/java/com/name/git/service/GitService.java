@@ -5,13 +5,10 @@ package com.name.git.service;
 
 
 
-import java.io.PrintWriter;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,13 +21,13 @@ public class GitService {
 	@Autowired
 	private GitDAO gitDAO;
 	private ModelAndView mav;
-	private MemberVO memberVO;
+
 	
-	@Autowired
+	/*@Autowired
 	private BCryptPasswordEncoder passEncoder;
 	
 	@Autowired
-	private HttpSession session;
+	private HttpSession session;*/
 	
 	//회원가입 처리
 	public ModelAndView memberJoin(MemberVO memberVO) {
@@ -44,8 +41,8 @@ public class GitService {
 		return mav;
 	}
 
-	//로그인 처리
-	public ModelAndView memberlogin(MemberVO memberVO, HttpServletResponse response) {
+	/*//로그인 처리
+	public ModelAndView memberlogin(MemberVO memberVO, HttpServletResponse response) throws IOException {
 
 		response.setContentType("text/thml; charset=UTF-8");
 		mav = new ModelAndView();
@@ -64,7 +61,7 @@ public class GitService {
 			out.close();
 		}
 		return mav;
-	}
+	}*/
 
 
 
