@@ -3,8 +3,8 @@
 
 <mapper namespace="Member">
 
-	<insert id="memberJoin" parameterType="member">
-		INSERT INTO MEMBER VALUES(#{MEM_ID}, #{MEM_PW}, #{MEM_NAME}, #{MEM_AGE}, #{MEM_GENDER}, #{MEM_SKINTYPE})
+	<insert id="memberJoin" parameterType="Member">
+		INSERT INTO MEMBER VALUES(#{MEM_ID}, #{MEM_PW}, #{MEM_NAME}, #{MEM_AGE}, #{MEM_EMAIL}, #{GENDER_ID}, #{SKINTYPE_ID}, #{MEM_STATE})
 	</insert>
 	
 
