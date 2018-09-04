@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Member">
+
+	<insert id="memberJoin" parameterType="member">
+		INSERT INTO MEMBER VALUES(#{MEM_ID}, #{MEM_PW}, #{MEM_NAME}, #{MEM_AGE}, #{MEM_GENDER}, #{MEM_SKINTYPE})
+	</insert>
+	
+
+</mapper>
