@@ -17,7 +17,6 @@
 				<td>아이디</td>
 				<td><input type="text" name="MEM_ID">
 				</td>
-				
 			</tr>
 			<tr>
 				<td>비밀번호</td>
@@ -32,13 +31,30 @@
 				<td><input type="text" name="MEM_AGE"></td>
 			</tr>
 			<tr>
+				<td>이메일</td>
+				<td><input type="email" name="MEM_EMAIL"></td>
+			</tr>
+			<tr>
 				<td>성별</td>
-				<td><input type="radio" name="MEM_GENDER" value="male">남 <input
-					type="radio" name="gender" value="female">여</td>
+				<td><input type="radio" name="GENDER_ID" value="1">남 <input
+					type="radio" name="GENDER_ID" value="2">여</td>
 			</tr>
 			<tr>
 				<td>피부타입</td>
-				<td><input type="text" name="MEM_SKINTYPE"></td>
+				<td>
+					<select name="SKINTYPE_ID">
+						<option value="1">악건성</option>
+						<option value="2">건성</option>
+						<option value="3">중성</option>
+						<option value="4">지성</option>
+						<option value="5">악지성</option>
+						<option value="6">민감성</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>건강상태</td>
+				<td><input type="text" name="MEM_STATE"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="회원가입"></td>
@@ -46,25 +62,7 @@
 		</table>
 	</form>
 	
-	<script>
-		function idOverlap() {
-			$.ajax({
-				type : "post",
-				url : "idOverlap",
-				data : {"id" : frm.MEM_ID.value},
-				dataType : "text",
-				success : function(data) {
-					if(data=="1")
-						alert("사용가능");
-					else
-						alert("사용불가");
-				},
-				error : function(request, status, error) {
-					alert("code : "+ request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + request.error);
-				}
-			});			
-		}
-	</script>
+	
 
 </body>
 </html>

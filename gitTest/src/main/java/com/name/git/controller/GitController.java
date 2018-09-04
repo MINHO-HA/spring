@@ -1,7 +1,7 @@
 package com.name.git.controller;
 
 
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +19,6 @@ public class GitController {
 	@Autowired
 	private GitService gs;
 	private ModelAndView mav;
-	
-	@Autowired
-	HttpSession session;
-	
-
 	
 	//제일 처음 띄울 페이지
 	@RequestMapping(value = "/" ,  method = RequestMethod.GET)
@@ -53,24 +48,9 @@ public class GitController {
 	@RequestMapping(value = "joinForm", method = RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute MemberVO memberVO) {
 		mav = new ModelAndView();
-		System.out.println("확인용 id : "+memberVO.getMEM_ID());
-		System.out.println("확인용 pw : "+memberVO.getMEM_PW());
-		System.out.println("확인용 이름 : "+memberVO.getMEM_NAME());
-		System.out.println("확인용 나이 : "+memberVO.getMEM_AGE());
-		System.out.println("확인용 성별 : "+memberVO.getMEM_GENDER());
-		System.out.println("확인용 피부타입 : "+memberVO.getMEM_SKINTYPE());
 		
 		mav = gs.memberJoin(memberVO);
 		return mav;
 	}
-	
-	/*//로그인 처리
-	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public ModelAndView memberlogin(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
-		mav = new ModelAndView();
-		mav = gs.memberlogin(memberVO, response);
-		return mav;
-	}*/
 
-	
 }
