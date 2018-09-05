@@ -6,3 +6,4 @@
 		<typeAlias alias="Member" type="com.name.git.vo.MemberVO" />
 	</typeAliases>
 </configuration>
+
