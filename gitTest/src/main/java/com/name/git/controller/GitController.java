@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.service.GitService;
@@ -75,7 +76,22 @@ public class GitController {
 		return "main";
 	}
 	
+	//개인정보 보기
+	@RequestMapping(value="/personalInfo", method = RequestMethod.GET)
+	public ModelAndView personalInfo(HttpServletResponse response, @RequestParam("id") String id) {
+		mav = new ModelAndView();
+		mav = gs.personalInfo(id);
+		return mav;
+	}
 	
+	//개인정보 변경 처리
+	@RequestMapping(value="/modifyPersonalInfo", method = RequestMethod.POST)
+	public ModelAndView modifyPersonalInfo(@ModelAttribute MemberVO memberVO) {
+		mav = new ModelAndView();
+		mav = gs.modifyPersonalInfo(memberVO);
+		
+		return mav;
+	}
 	
 	
 

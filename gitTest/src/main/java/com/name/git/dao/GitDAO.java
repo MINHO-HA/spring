@@ -21,5 +21,13 @@ public class GitDAO {
 		return sqlSession.selectOne("Member.memberLogin", memberVO);
 	}
 
+	public MemberVO personalInfo(String id) {
+		return sqlSession.selectOne("Member.personalInfo", id);
+	}
+
+	public int modifyPersonalInfo(MemberVO memberVO) {
+		return sqlSession.update("Member.modifyPersonalInfo", memberVO);
+	}
+
 
 }

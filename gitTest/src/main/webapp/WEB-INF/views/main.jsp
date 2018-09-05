@@ -15,7 +15,7 @@
 		관리자님 환영합니다.
 		</c:when>
 				<c:otherwise>
-		${sessionScope.session_id } 님 환영해요~
+		<a href="myPage">${sessionScope.session_id }</a> 님 환영해요~(아이디 클릭시 마이페이지로 이동)
 		</c:otherwise>
 			</c:choose>
 			<input type="button" value="로그아웃" onclick="location.href='./logout'">
@@ -28,7 +28,7 @@
 
 	<a href="login">Login(로그인페이지 이동)</a> /
 	<a href="signUp">Sign Up(회원가입페이지 이동)</a> /
-	<a href="myPage">myPage(마이페이지로 이동)</a>
+
 	<br>
 	<br>
 

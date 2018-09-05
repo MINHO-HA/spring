@@ -20,6 +20,7 @@ public class GitService {
 	@Autowired
 	private GitDAO gitDAO;
 	private ModelAndView mav;
+	private MemberVO memberVO;
 	
 	@Autowired
 	private HttpSession session;
@@ -49,11 +50,37 @@ public class GitService {
 			session.setAttribute("session_id", memberVO.getMEM_ID());
 			mav.setViewName("main");
 		} else {
-			out.println("<script>"); // 로그인 실패 alert
+			// 로그인 실패 alert
+			out.println("<script>"); 
 			out.println("alert('비밀번호가 틀립니다.');");
 			out.println("history.go(-1);");
 			out.println("</script>");
 			out.close();
+		}
+		return mav;
+	}
+
+	//개인정보 보기 및 변경 처리
+	public ModelAndView personalInfo(String id) {
+		
+		mav = new ModelAndView();
+		memberVO = new MemberVO();
+		memberVO = gitDAO.personalInfo(id);
+		
+		mav.addObject("personalInfo", memberVO);
+		mav.setViewName("personalInfo");
+	
+		return mav;
+	}
+
+	public ModelAndView modifyPersonalInfo(MemberVO memberVO) {
+		mav = new ModelAndView();
+	
+		int result = gitDAO.modifyPersonalInfo(memberVO);
+		if(result == 0) {
+			mav.setViewName("personalInfo");
+		} else {
+			mav.setViewName("main");
 		}
 		return mav;
 	}
