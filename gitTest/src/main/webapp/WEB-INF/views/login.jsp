@@ -8,7 +8,7 @@
 </head>
 <body>
 	login Page
-	<form action=login method="POST" id="frm">
+	<form action="login" method="POST" id="frm">
 		<label> 아이디 : <input type="text" name="MEM_ID"
 			placeholder="아이디를 입력하세요" />
 		</label> <br> <label> 비밀번호 : <input type="password" name="MEM_PW"

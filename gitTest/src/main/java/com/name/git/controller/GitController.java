@@ -3,6 +3,11 @@ package com.name.git.controller;
 
 
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +24,9 @@ public class GitController {
 	@Autowired
 	private GitService gs;
 	private ModelAndView mav;
+	
+	@Autowired
+	HttpSession session;
 	
 	//제일 처음 띄울 페이지
 	@RequestMapping(value = "/" ,  method = RequestMethod.GET)
@@ -52,5 +60,23 @@ public class GitController {
 		mav = gs.memberJoin(memberVO);
 		return mav;
 	}
+	//로그인 처리
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public ModelAndView memberLogin(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
+		mav = new ModelAndView();
+		mav = gs.memberLogin(memberVO, response);
+		return mav;
+	}
+	
+	//로그아웃 처리
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String lpgout() {
+		session.invalidate();
+		return "main";
+	}
+	
+	
+	
+	
 
 }
