@@ -29,5 +29,9 @@ public class GitDAO {
 		return sqlSession.update("Member.modifyPersonalInfo", memberVO);
 	}
 
+	public MemberVO passwordChecking(MemberVO memberVO) {
+		return sqlSession.selectOne("Member.passwordChecking", memberVO);
+	}
+
 
 }

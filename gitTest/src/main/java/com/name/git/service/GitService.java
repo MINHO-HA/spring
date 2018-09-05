@@ -39,6 +39,26 @@ public class GitService {
 		return mav;
 	}
 
+	//개인정보 페이지 비밀번호 확인
+	public ModelAndView passwordChecking(MemberVO memberVO, HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		mav = new ModelAndView();
+		MemberVO password = gitDAO.passwordChecking(memberVO);
+		PrintWriter out = response.getWriter();
+		
+		if(memberVO.getMEM_PW().equals(password.getMEM_PW())) {
+			mav.addObject("check", memberVO);
+			mav.setViewName("myPage");
+		} else { 
+			out.println("<script>"); 
+			out.println("alert('비밀번호가 틀립니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		}
+		return mav;
+	}
+	
 	//로그인 처리
 	public ModelAndView memberLogin(MemberVO memberVO, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");
@@ -60,7 +80,7 @@ public class GitService {
 		return mav;
 	}
 
-	//개인정보 보기 및 변경 처리
+	//개인정보 보기
 	public ModelAndView personalInfo(String id) {
 		
 		mav = new ModelAndView();
@@ -73,6 +93,7 @@ public class GitService {
 		return mav;
 	}
 
+	//개인정보 변경
 	public ModelAndView modifyPersonalInfo(MemberVO memberVO) {
 		mav = new ModelAndView();
 	
@@ -84,6 +105,8 @@ public class GitService {
 		}
 		return mav;
 	}
+
+	
 
 
 }

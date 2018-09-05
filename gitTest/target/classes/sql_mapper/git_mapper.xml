@@ -22,4 +22,9 @@
 	<update id="modifyPersonalInfo" parameterType="Member">
 		UPDATE MEMBER SET MEM_NAME = #{MEM_NAME}, MEM_AGE = #{MEM_AGE}, MEM_EMAIL = #{MEM_EMAIL}, GENDER_ID = #{GENDER_ID}, SKINTYPE_ID = #{SKINTYPE_ID}, MEM_STATE = #{MEM_STATE} WHERE MEM_ID = #{MEM_ID}
 	</update>
+	
+	<!-- 개인정보 비밀번호 확인 -->
+	<select id="passwordChecking" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
+	</select>
 </mapper>

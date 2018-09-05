@@ -69,6 +69,14 @@ public class GitController {
 		return mav;
 	}
 	
+	//마이페이지에서 비밀번호 확인
+	@RequestMapping(value = "passwordForCheck", method = RequestMethod.POST)
+	public ModelAndView passwordChecking(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
+		mav = new ModelAndView();
+		mav = gs.passwordChecking(memberVO, response);
+		return mav;
+	}
+	
 	//로그아웃 처리
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String lpgout() {
