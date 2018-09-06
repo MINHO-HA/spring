@@ -4,7 +4,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+import com.name.git.vo.ItemVO;
 import com.name.git.vo.MemberVO;
 
 @Repository
@@ -14,23 +14,31 @@ public class GitDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	public int memberJoin(MemberVO memberVO) {
-		return sqlSession.insert("Member.memberJoin", memberVO);
+		return sqlSession.insert("Git.memberJoin", memberVO);
 	}
 
 	public MemberVO memberLogin(MemberVO memberVO) {
-		return sqlSession.selectOne("Member.memberLogin", memberVO);
+		return sqlSession.selectOne("Git.memberLogin", memberVO);
 	}
 
 	public MemberVO personalInfo(String id) {
-		return sqlSession.selectOne("Member.personalInfo", id);
+		return sqlSession.selectOne("Git.personalInfo", id);
 	}
 
 	public int modifyPersonalInfo(MemberVO memberVO) {
-		return sqlSession.update("Member.modifyPersonalInfo", memberVO);
+		return sqlSession.update("Git.modifyPersonalInfo", memberVO);
 	}
 
 	public MemberVO passwordChecking(MemberVO memberVO) {
-		return sqlSession.selectOne("Member.passwordChecking", memberVO);
+		return sqlSession.selectOne("Git.passwordChecking", memberVO);
+	}
+
+	public MemberVO searchingSth(String id) {
+		return sqlSession.selectOne("Git.whenSearchingFollowingInfo", id);
+	}
+
+	public ItemVO searchingSth2(ItemVO itemVO) {
+		return sqlSession.selectOne("Git.searchKeyword", itemVO);
 	}
 
 

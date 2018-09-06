@@ -15,7 +15,7 @@
 		관리자님 환영합니다.
 		</c:when>
 				<c:otherwise>
-		<a href="myPage">${sessionScope.session_id }</a> 님 환영해요~(아이디 클릭시 마이페이지로 이동)
+					<a href="myPage">${sessionScope.session_id }</a> 님 환영해요~(아이디 클릭시 마이페이지로 이동)
 		</c:otherwise>
 			</c:choose>
 			<input type="button" value="로그아웃" onclick="location.href='./logout'">
@@ -38,12 +38,17 @@
 	<br>
 	<br>
 
-	<select name="category">
-		<option value="brand">브랜드</option>
-	</select>
-	<form action="serach" method="get">
-		<input type="text" value="검색어를 입력해 주세요" name="serachContent">
+	<form action="searchingSth" method="get">
+		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
+		<select name="ITEM_CATEGORY">
+			<option value="hair">헤어</option>
+			<option value="skincare">스킨케어</option>
+			<option value="cleansing">클렌징</option>
+			<option value="perfume">향수</option>
+		</select> 
+		<input type="text" value="검색어를 입력해 주세요" name="ITEM_NAME">
 		<input type="submit" value="검색">
+		
 	</form>
 </body>
 </html>

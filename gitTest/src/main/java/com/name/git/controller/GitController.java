@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.service.GitService;
+import com.name.git.vo.ItemVO;
 import com.name.git.vo.MemberVO;
 
 @Controller
@@ -79,7 +80,7 @@ public class GitController {
 	
 	//로그아웃 처리
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String lpgout() {
+	public String logout() {
 		session.invalidate();
 		return "main";
 	}
@@ -101,6 +102,14 @@ public class GitController {
 		return mav;
 	}
 	
+	//메인에서 검색어 입력시 처리
+	@RequestMapping(value="/searchingSth", method = RequestMethod.GET)
+	public ModelAndView searchingSth(@RequestParam("MEM_ID") String id, @ModelAttribute ItemVO itemVO) {
+		mav = new ModelAndView();
+		mav = gs.searchingSth(id, itemVO);
+		
+		return mav;
+	}
 	
 
 }

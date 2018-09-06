@@ -14,9 +14,6 @@
 나이 : <input type="text" name="MEM_AGE" value=${personalInfo.getMEM_AGE() }><br>
 이메일 : <input type="email" name="MEM_EMAIL" value=${personalInfo.getMEM_EMAIL() }><br>
 성별 : 
-	
-
-
 	<c:choose>
 		<c:when test="${personalInfo.getGENDER_ID() == 1 }">
 			<input type="radio" name="GENDER_ID" value="1" checked="checked">남 

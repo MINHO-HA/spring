@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Member">
+<mapper namespace="Git">
 
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="Member">
@@ -27,4 +27,22 @@
 	<select id="passwordChecking" parameterType="Member" resultType="Member">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
+	
+	<!-- 검색 페이지에 띄워질 개인정보 -->
+	<select id="whenSearchingFollowingInfo" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
+	</select>
+	
+	<!-- 메인에서 검색 쿼리문 -->
+	<select id="searchKeyword" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE ITEM_NAME = #{ITEM_NAME} OR ITEM_BRAND = #{ITEM_NAME} OR ITEM_ID = #{ITEM_NAME} AND ITEM_CATEGORY = #{ITEM_CATEGORY}  
+		<!-- SELECT * FROM ITEM WHERE ITEM_NAME LIKE '%#{ITEM_NAME}%' -->
+	</select>
+	
+	
+	
+	
+	
 </mapper>
+
+

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.dao.GitDAO;
+import com.name.git.vo.ItemVO;
 import com.name.git.vo.MemberVO;
 
 @Service
@@ -21,6 +22,7 @@ public class GitService {
 	private GitDAO gitDAO;
 	private ModelAndView mav;
 	private MemberVO memberVO;
+	private ItemVO SearchedInfo;
 	
 	@Autowired
 	private HttpSession session;
@@ -82,7 +84,6 @@ public class GitService {
 
 	//개인정보 보기
 	public ModelAndView personalInfo(String id) {
-		
 		mav = new ModelAndView();
 		memberVO = new MemberVO();
 		memberVO = gitDAO.personalInfo(id);
@@ -103,6 +104,22 @@ public class GitService {
 		} else {
 			mav.setViewName("main");
 		}
+		return mav;
+	}
+
+	//제품 검색시
+	public ModelAndView searchingSth(String id, ItemVO itemVO) {
+		mav = new ModelAndView();
+		memberVO = new MemberVO();
+		memberVO = gitDAO.searchingSth(id);
+		
+		
+		SearchedInfo = gitDAO.searchingSth2(itemVO);
+		mav.addObject("personalInfo", memberVO);
+		mav.addObject("searchKeyword", SearchedInfo);
+		
+		mav.setViewName("searchingPage");
+		
 		return mav;
 	}
 
