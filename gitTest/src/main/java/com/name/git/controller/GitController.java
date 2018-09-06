@@ -110,6 +110,16 @@ public class GitController {
 		
 		return mav;
 	}
+
+	//제품 상세 페이지(이미지 클릭시)
+	@RequestMapping(value="/viewItem", method = RequestMethod.GET)
+	public ModelAndView viewItem(@RequestParam("ITEM_ID") int id) {
+		mav = new ModelAndView();
+		mav = gs.viewItem(id);
+		
+		return mav;
+	}
+	
 	
 
 }

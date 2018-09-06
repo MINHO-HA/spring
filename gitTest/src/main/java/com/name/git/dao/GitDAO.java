@@ -1,5 +1,7 @@
 package com.name.git.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -37,9 +39,15 @@ public class GitDAO {
 		return sqlSession.selectOne("Git.whenSearchingFollowingInfo", id);
 	}
 
-	public ItemVO searchingSth2(ItemVO itemVO) {
-		return sqlSession.selectOne("Git.searchKeyword", itemVO);
+	public List<ItemVO> searchingSth2(ItemVO itemVO) {
+		return sqlSession.selectList("Git.searchKeyword", itemVO);
 	}
+
+	public ItemVO viewItem(int id) {
+		return sqlSession.selectOne("Git.viewItem", id);
+	}
+	
+	
 
 
 }

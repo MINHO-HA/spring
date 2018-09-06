@@ -35,11 +35,15 @@
 	
 	<!-- 메인에서 검색 쿼리문 -->
 	<select id="searchKeyword" parameterType="Item" resultType="Item">
-		SELECT * FROM ITEM WHERE ITEM_NAME = #{ITEM_NAME} OR ITEM_BRAND = #{ITEM_NAME} OR ITEM_ID = #{ITEM_NAME} AND ITEM_CATEGORY = #{ITEM_CATEGORY}  
+		SELECT * FROM ITEM WHERE ITEM_NAME = #{ITEM_NAME} OR ITEM_BRAND = #{ITEM_NAME} OR ITEM_ID = #{ITEM_NAME} AND ITEM_CATEGORY = #{ITEM_CATEGORY}
 		<!-- SELECT * FROM ITEM WHERE ITEM_NAME LIKE '%#{ITEM_NAME}%' -->
 	</select>
 	
-	
+
+	<!-- 제품상세 -->
+	<select id="viewItem" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE ITEM_ID = #{ITEM_ID}
+	</select>
 	
 	
 	

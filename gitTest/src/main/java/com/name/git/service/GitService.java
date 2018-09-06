@@ -3,6 +3,7 @@ package com.name.git.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -22,7 +23,8 @@ public class GitService {
 	private GitDAO gitDAO;
 	private ModelAndView mav;
 	private MemberVO memberVO;
-	private ItemVO SearchedInfo;
+	private ItemVO itemVO;
+
 	
 	@Autowired
 	private HttpSession session;
@@ -113,12 +115,26 @@ public class GitService {
 		memberVO = new MemberVO();
 		memberVO = gitDAO.searchingSth(id);
 		
+		List<ItemVO> list = gitDAO.searchingSth2(itemVO);
 		
-		SearchedInfo = gitDAO.searchingSth2(itemVO);
+		
 		mav.addObject("personalInfo", memberVO);
-		mav.addObject("searchKeyword", SearchedInfo);
+		mav.addObject("searchKeyword", list);
 		
 		mav.setViewName("searchingPage");
+		
+		return mav;
+	}
+
+	//제품 상세페이지
+	public ModelAndView viewItem(int id) {
+		mav = new ModelAndView();
+		
+		itemVO = new ItemVO();
+		itemVO = gitDAO.viewItem(id);
+		
+		mav.addObject("itemView", itemVO);
+		mav.setViewName("viewItem");
 		
 		return mav;
 	}

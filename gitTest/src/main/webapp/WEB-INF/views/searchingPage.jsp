@@ -78,14 +78,23 @@
 	<br>
 	
 	
+	검색한 상품<br>
+	<c:forEach var="searchKeyword" items="${searchKeyword }">
+		<table>
+			<tr>
+				<td><a href="viewItem?ITEM_ID=${searchKeyword.ITEM_ID }"><img src="./resources/img/1.jpg" alt="사진(클릭하면 상세페이지)"></a></td>
+			</tr>
+			<tr>
+				<td>${searchKeyword.ITEM_NAME }</td>
+			</tr>
+		</table>
+	</c:forEach>
 	
-	검색한 상품<br> 
-	제품 아이디 : ${searchKeyword.getITEM_ID() }<br>
+	<%-- <a href="viewItem?ITEM_ID=${searchKeyword.getITEM_ID() }"><img src="./resources/img/1.jpg" alt="사진(클릭하면 상세페이지)"></a>
+	<br>
 	제품 이름  : ${searchKeyword.getITEM_NAME() }<br>
-	제품 브랜드 : ${searchKeyword.getITEM_BRAND() }<br>
-	
-	
-	
+	 --%><%-- 제품 아이디 : ${searchKeyword.getITEM_ID() }<br>
+	제품 브랜드 : ${searchKeyword.getITEM_BRAND() }<br> --%>
 	
 	
 	
