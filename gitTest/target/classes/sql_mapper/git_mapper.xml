@@ -32,7 +32,7 @@
 	<select id="whenSearchingFollowingInfo" parameterType="Member" resultType="Member">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
-	
+
 	<!-- 메인에서 검색 쿼리문 -->
 	<select id="searchedResults" parameterType="Item" resultType="Item">
 		SELECT * FROM ITEM WHERE ITEM_CATEGORY = #{ITEM_CATEGORY} AND (ITEM_NAME LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_BRAND LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_ID LIKE '%' || #{ITEM_NAME} || '%')
@@ -52,6 +52,11 @@
 			SELECT REVIEW_SEQ.CURRVAL FROM DUAL
 		</selectKey>
 	</insert>
+	
+	<!-- 리뷰 리스트 -->
+	<select id="reviewLists" parameterType="Review" resultType="Review">
+		SELECT * FROM REVIEW
+	</select>
 	
 </mapper>
 

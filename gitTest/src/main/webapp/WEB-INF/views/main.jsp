@@ -9,9 +9,9 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${not empty sessionScope }">
+		<c:when test="${not empty sessionScope.session_id }">
 			<c:choose>
-				<c:when test="${sessionScope eq  'admin'}">
+				<c:when test="${sessionScope.session_id eq 'admin'}">
 		관리자님 환영합니다.
 		</c:when>
 				<c:otherwise>

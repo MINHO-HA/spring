@@ -153,16 +153,19 @@ public class GitService {
 		
 		return modelAndView;
 	}
-
+	
 	
 	
 	//제품 상세페이지
-	public ModelAndView viewItem(int id) {
+	public ModelAndView viewItem(ReviewVO reviewVO) {
 		
 		modelAndView = new ModelAndView();
 		
 		itemVO = new ItemVO();
-		itemVO = gitDAO.viewItem(id);
+		itemVO = gitDAO.viewItem(reviewVO);
+		
+		List<ReviewVO> list = gitDAO.reviewLists(reviewVO);
+		modelAndView.addObject("reviewLists", list);
 		
 		modelAndView.addObject("itemView", itemVO);
 		modelAndView.setViewName("viewItem");
@@ -179,14 +182,6 @@ public class GitService {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		
-		System.out.println("-------------------");
-		System.out.println(reviewVO.getITEM_ID());
-		System.out.println(reviewVO.getMEM_ID());
-		
-		
-		
-		
 		int result = gitDAO.reviewWriting(reviewVO);
 		
 		if(result == 0) {
@@ -198,7 +193,7 @@ public class GitService {
 		} else {
 			//리뷰변수 넣어야되고
 			//쿼리문에서 충분한 벨류값 넣어야되고 
-			modelAndView.setViewName("viewItem");
+			modelAndView.setViewName("redirect:/viewItem?ITEM_ID="+reviewVO.getITEM_ID()+"&MEM_ID="+reviewVO.getMEM_ID());
 		}
 		
 		return modelAndView;

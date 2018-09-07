@@ -60,14 +60,19 @@ public class GitDAO {
 	
 	
 	//제품 상세 페이지 처리
-	public ItemVO viewItem(int id) {
-		return sqlSession.selectOne("Git.viewItem", id);
+	public ItemVO viewItem(ReviewVO reviewVO) {
+		return sqlSession.selectOne("Git.viewItem", reviewVO);
 	}
 
 
 	//리뷰 작성 처리
 	public int reviewWriting(ReviewVO reviewVO) {
 		return sqlSession.insert("Git.reviewWriting", reviewVO);
+	}
+
+	//리뷰 목록 보기
+	public List<ReviewVO> reviewLists(ReviewVO reviewVO) {
+		return sqlSession.selectList("Git.reviewLists", reviewVO);
 	}
 	
 	
