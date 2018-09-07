@@ -78,7 +78,7 @@
 	<br>
 	
 	
-	검색한 상품<br>
+	검색한 상품 : <br>
 	<c:forEach var="searchKeyword" items="${searchKeyword }">
 		<table>
 			<tr>

@@ -26,7 +26,7 @@
 	<br>
 	<br>
 
-	<a href="login">Login(로그인페이지 이동)</a> /
+	<a href="loginPage">Login(로그인페이지 이동)</a> /
 	<a href="signUp">Sign Up(회원가입페이지 이동)</a> /
 
 	<br>

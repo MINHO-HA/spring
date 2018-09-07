@@ -34,8 +34,8 @@
 	</select>
 	
 	<!-- 메인에서 검색 쿼리문 -->
-	<select id="searchKeyword" parameterType="Item" resultType="Item">
-		SELECT * FROM ITEM WHERE ITEM_NAME = #{ITEM_NAME} OR ITEM_BRAND = #{ITEM_NAME} OR ITEM_ID = #{ITEM_NAME} AND ITEM_CATEGORY = #{ITEM_CATEGORY}
+	<select id="searchedResults" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE ITEM_CATEGORY = #{ITEM_CATEGORY} AND (ITEM_NAME LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_BRAND LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_ID LIKE '%' || #{ITEM_NAME} || '%')
 		<!-- SELECT * FROM ITEM WHERE ITEM_NAME LIKE '%#{ITEM_NAME}%' -->
 	</select>
 	
@@ -45,7 +45,13 @@
 		SELECT * FROM ITEM WHERE ITEM_ID = #{ITEM_ID}
 	</select>
 	
-	
+	<!-- 리뷰작성 -->
+	<insert id="reviewWriting" parameterType="Review">
+		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{MEM_ID}, #{REVIEW_TITLE}, #{REVIEW_CONTENT}, #{ITEM_ID}, 0, #{REVIEW_GRADE})
+		<selectKey keyProperty="REVIEW_ID" resultType="int" order="AFTER">
+			SELECT REVIEW_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
 	
 </mapper>
 

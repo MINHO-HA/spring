@@ -29,8 +29,7 @@
 
 		<c:otherwise>
 			비밀번호를 다시 한 번 입력해주세요.
-			<form action="passwordForCheck?MEM_ID=${sessionScope.session_id }"
-				method="post">
+			<form action="passwordForCheck?MEM_ID=${sessionScope.session_id }" method="post">
 				<input type="password" name="MEM_PW"> <input type="submit"
 					value="확인">
 			</form>

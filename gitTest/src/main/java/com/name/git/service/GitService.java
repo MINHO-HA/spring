@@ -15,44 +15,54 @@ import org.springframework.web.servlet.ModelAndView;
 import com.name.git.dao.GitDAO;
 import com.name.git.vo.ItemVO;
 import com.name.git.vo.MemberVO;
+import com.name.git.vo.ReviewVO;
 
 @Service
 public class GitService {
 	
 	@Autowired
 	private GitDAO gitDAO;
-	private ModelAndView mav;
+	private ModelAndView modelAndView;
 	private MemberVO memberVO;
 	private ItemVO itemVO;
-
+	
 	
 	@Autowired
 	private HttpSession session;
 	
+	
+	
 	//회원가입 처리
 	public ModelAndView memberJoin(MemberVO memberVO) {
-		mav = new ModelAndView();
-		System.out.println("성별 : "+memberVO.getGENDER_ID());
-		System.out.println("스킨타입 : "+memberVO.getSKINTYPE_ID());
+		
+		modelAndView = new ModelAndView();
+
 		int result = gitDAO.memberJoin(memberVO);
+		
 		if(result == 0) {
-			mav.setViewName("signUp");
+			modelAndView.setViewName("signUp");
 		} else {
-			mav.setViewName("main");
+			modelAndView.setViewName("main");
 		}
-		return mav;
+		
+		return modelAndView;
 	}
 
+	
+	
 	//개인정보 페이지 비밀번호 확인
 	public ModelAndView passwordChecking(MemberVO memberVO, HttpServletResponse response) throws IOException {
+		
+		modelAndView = new ModelAndView();
+		
 		response.setContentType("text/html; charset=UTF-8");
-		mav = new ModelAndView();
-		MemberVO password = gitDAO.passwordChecking(memberVO);
 		PrintWriter out = response.getWriter();
 		
+		MemberVO password = gitDAO.passwordChecking(memberVO);
+
 		if(memberVO.getMEM_PW().equals(password.getMEM_PW())) {
-			mav.addObject("check", memberVO);
-			mav.setViewName("myPage");
+			modelAndView.addObject("check", memberVO);
+			modelAndView.setViewName("myPage");
 		} else { 
 			out.println("<script>"); 
 			out.println("alert('비밀번호가 틀립니다.');");
@@ -60,19 +70,25 @@ public class GitService {
 			out.println("</script>");
 			out.close();
 		}
-		return mav;
+		
+		return modelAndView;
 	}
+	
+	
 	
 	//로그인 처리
 	public ModelAndView memberLogin(MemberVO memberVO, HttpServletResponse response) throws IOException {
+		
+		modelAndView = new ModelAndView();
+		
 		response.setContentType("text/html; charset=UTF-8");
-		mav = new ModelAndView();
-		MemberVO loginMember = gitDAO.memberLogin(memberVO);
 		PrintWriter out = response.getWriter();
 		
+		MemberVO loginMember = gitDAO.memberLogin(memberVO);
+	
 		if(memberVO.getMEM_PW().equals(loginMember.getMEM_PW())) {
 			session.setAttribute("session_id", memberVO.getMEM_ID());
-			mav.setViewName("main");
+			modelAndView.setViewName("main");
 		} else {
 			// 로그인 실패 alert
 			out.println("<script>"); 
@@ -81,65 +97,111 @@ public class GitService {
 			out.println("</script>");
 			out.close();
 		}
-		return mav;
+		
+		return modelAndView;
 	}
 
+	
+	
 	//개인정보 보기
 	public ModelAndView personalInfo(String id) {
-		mav = new ModelAndView();
+		
+		modelAndView = new ModelAndView();
+		
 		memberVO = new MemberVO();
 		memberVO = gitDAO.personalInfo(id);
 		
-		mav.addObject("personalInfo", memberVO);
-		mav.setViewName("personalInfo");
+		modelAndView.addObject("personalInfo", memberVO);
+		modelAndView.setViewName("personalInfo");
 	
-		return mav;
+		return modelAndView;
 	}
 
+	
+	
 	//개인정보 변경
 	public ModelAndView modifyPersonalInfo(MemberVO memberVO) {
-		mav = new ModelAndView();
+		
+		modelAndView = new ModelAndView();
 	
 		int result = gitDAO.modifyPersonalInfo(memberVO);
+		
 		if(result == 0) {
-			mav.setViewName("personalInfo");
+			modelAndView.setViewName("personalInfo");
 		} else {
-			mav.setViewName("main");
+			modelAndView.setViewName("main");
 		}
-		return mav;
+		
+		return modelAndView;
 	}
 
+	
+	
 	//제품 검색시
-	public ModelAndView searchingSth(String id, ItemVO itemVO) {
-		mav = new ModelAndView();
+	public ModelAndView searchingKeyword(String id, ItemVO itemVO) {
+		
+		modelAndView = new ModelAndView();
+		
 		memberVO = new MemberVO();
-		memberVO = gitDAO.searchingSth(id);
+		memberVO = gitDAO.whenSearchingFollowingInfo(id);
 		
-		List<ItemVO> list = gitDAO.searchingSth2(itemVO);
+		List<ItemVO> list = gitDAO.searchedResults(itemVO);
 		
+		modelAndView.addObject("personalInfo", memberVO);
+		modelAndView.addObject("searchKeyword", list);
+		modelAndView.setViewName("searchingPage");
 		
-		mav.addObject("personalInfo", memberVO);
-		mav.addObject("searchKeyword", list);
-		
-		mav.setViewName("searchingPage");
-		
-		return mav;
+		return modelAndView;
 	}
 
+	
+	
 	//제품 상세페이지
 	public ModelAndView viewItem(int id) {
-		mav = new ModelAndView();
+		
+		modelAndView = new ModelAndView();
 		
 		itemVO = new ItemVO();
 		itemVO = gitDAO.viewItem(id);
 		
-		mav.addObject("itemView", itemVO);
-		mav.setViewName("viewItem");
+		modelAndView.addObject("itemView", itemVO);
+		modelAndView.setViewName("viewItem");
 		
-		return mav;
+		return modelAndView;
 	}
 
-	
 
+	//리뷰 작성
+	public ModelAndView reviewWriting(ReviewVO reviewVO, HttpServletResponse response) throws IOException {
+		
+		modelAndView = new ModelAndView();
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		
+		System.out.println("-------------------");
+		System.out.println(reviewVO.getITEM_ID());
+		System.out.println(reviewVO.getMEM_ID());
+		
+		
+		
+		
+		int result = gitDAO.reviewWriting(reviewVO);
+		
+		if(result == 0) {
+			out.println("<script>"); 
+			out.println("alert('리뷰작성에 실패하였습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		} else {
+			//리뷰변수 넣어야되고
+			//쿼리문에서 충분한 벨류값 넣어야되고 
+			modelAndView.setViewName("viewItem");
+		}
+		
+		return modelAndView;
+	}
 
 }
