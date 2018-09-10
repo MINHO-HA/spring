@@ -41,7 +41,7 @@ public class ItemController {
 		
 		return modelAndView;
 	}
-
+	
 	
 	
 	//제품 상세 페이지(이미지 클릭시)
@@ -57,10 +57,10 @@ public class ItemController {
 	
 	
 	//리뷰작성 페이지로 이동
-	@RequestMapping(value = "/writeReview" ,  method = RequestMethod.GET)
+	@RequestMapping(value = "/reviewForm" ,  method = RequestMethod.GET)
 	public String writeReview() {
 		
-		return "writeReviewForm";
+		return "reviewForm";
 	}
 	
 	

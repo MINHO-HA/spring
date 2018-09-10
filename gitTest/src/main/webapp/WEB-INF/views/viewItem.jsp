@@ -27,7 +27,7 @@
 
 
 
-	<a href="writeReview?ITEM_ID=${itemView.getITEM_ID() }">리뷰작성</a>
+	<a href="reviewForm?ITEM_ID=${itemView.getITEM_ID() }">리뷰작성</a>
 
 </body>
 </html>

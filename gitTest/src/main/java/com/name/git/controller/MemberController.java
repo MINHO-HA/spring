@@ -57,15 +57,6 @@ public class MemberController {
 	
 	
 	
-	//마이 페이지
-	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
-	public String myPage() {
-		
-		return "myPage";	
-	}
-	
-	
-	
 	//회원가입 페이지
 	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute MemberVO memberVO) {
@@ -81,11 +72,31 @@ public class MemberController {
 	//로그인 처리
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView memberLogin(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
-		
+			
 		modelAndView = new ModelAndView();
 		modelAndView = memberService.memberLogin(memberVO, response);
-		
+			
 		return modelAndView;	
+	}
+	
+	
+	
+	//로그아웃 처리
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout() {
+		
+		session.invalidate();
+		
+		return "main";
+	}
+	
+	
+	
+	//마이 페이지
+	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+	public String myPage() {
+		
+		return "myPage";	
 	}
 	
 	
@@ -98,17 +109,6 @@ public class MemberController {
 		modelAndView = memberService.passwordChecking(memberVO, response);
 		
 		return modelAndView;
-	}
-	
-	
-	
-	//로그아웃 처리
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout() {
-		
-		session.invalidate();
-		
-		return "main";
 	}
 	
 	
@@ -136,7 +136,7 @@ public class MemberController {
 	}
 	
 	
-
+	
 	
 	
 }
