@@ -58,6 +58,11 @@
 		SELECT * FROM REVIEW
 	</select>
 	
+	<!-- 내가 작성한 리뷰 리스트 -->
+	<select id="reviewsIWrote" parameterType="Review" resultType="Review">
+		SELECT * FROM REVIEW WHERE MEM_ID = #{MEM_ID}
+	</select>
+	
 </mapper>
 
 

@@ -38,7 +38,7 @@ public class ItemService {
 		
 		modelAndView.addObject("personalInfo", memberVO);
 		modelAndView.addObject("searchKeyword", list);
-		modelAndView.setViewName("searchingPage");
+		modelAndView.setViewName("searchPage");
 		
 		return modelAndView;
 	}
@@ -84,6 +84,19 @@ public class ItemService {
 			//쿼리문에서 충분한 벨류값 넣어야되고 
 			modelAndView.setViewName("redirect:/viewItem?ITEM_ID="+reviewVO.getITEM_ID()+"&MEM_ID="+reviewVO.getMEM_ID());
 		}
+		
+		return modelAndView;
+	}
+
+
+	//내가 작성한 리뷰 보기
+	public ModelAndView reviewsIWrote(ReviewVO reviewVO) {
+
+		modelAndView = new ModelAndView();
+		
+		List<ReviewVO> list = gitDAO.reviewsIWrote(reviewVO);
+		modelAndView.addObject("list", list);
+		modelAndView.setViewName("reviewsIWrote");
 		
 		return modelAndView;
 	}

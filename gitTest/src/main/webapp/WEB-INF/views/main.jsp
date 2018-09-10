@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<a href="./">logo(메인이동)</a>
 	<c:choose>
 		<c:when test="${not empty sessionScope.session_id }">
 			<c:choose>
@@ -20,14 +21,15 @@
 			</c:choose>
 			<input type="button" value="로그아웃" onclick="location.href='./logout'">
 		</c:when>
+		<c:otherwise>
+			<a href="loginPage">Login(로그인페이지 이동)</a> /
+			<a href="signUp">Sign Up(회원가입페이지 이동)</a> /
+		</c:otherwise>
 	</c:choose>
 
-	<br>
-	<br>
-	<br>
 
-	<a href="loginPage">Login(로그인페이지 이동)</a> /
-	<a href="signUp">Sign Up(회원가입페이지 이동)</a> /
+
+
 
 	<br>
 	<br>
@@ -45,10 +47,9 @@
 			<option value="skincare">스킨케어</option>
 			<option value="cleansing">클렌징</option>
 			<option value="perfume">향수</option>
-		</select> 
-		<input type="text" value="검색어를 입력해 주세요" name="ITEM_NAME">
-		<input type="submit" value="검색">
-		
+		</select> <input type="text" placeholder="검색어 입력" name="ITEM_NAME"> <input
+			type="submit" value="검색">
+
 	</form>
 </body>
 </html>

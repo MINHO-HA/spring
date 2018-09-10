@@ -76,4 +76,15 @@ public class ItemController {
 	}
 	
 	
+	
+	//내가 쓴 리뷰 
+	@RequestMapping(value="/reviewsIWrote", method = RequestMethod.GET)
+	public ModelAndView reviewsIWrote(@ModelAttribute ReviewVO reviewVO) {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.reviewsIWrote(reviewVO);
+		
+		return modelAndView;
+	}
+	
 }

@@ -6,8 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+ul{
+	list-style: none;	
+}
+</style>
 </head>
 <body>
+	<a href="./">logo(메인이동)</a>
+	<c:choose>
+		<c:when test="${not empty sessionScope.session_id }">
+			<c:choose>
+				<c:when test="${sessionScope.session_id eq 'admin'}">
+		관리자님 환영합니다.
+		</c:when>
+				<c:otherwise>
+					<a href="myPage">${sessionScope.session_id }</a> 님 환영해요~(아이디 클릭시 마이페이지로 이동)
+		</c:otherwise>
+			</c:choose>
+			<input type="button" value="로그아웃" onclick="location.href='./logout'">
+		</c:when>
+	</c:choose>
+	<br><br>
+	
+	
+		${sessionScope.session_id }님의 마이 페이지
+
+	<br>
+
+	<ul>
+		<li style="font-weight: bold;">개인정보 수정</li>
+		<li><a href="reviewsIWrote?MEM_ID=${personalInfo.getMEM_ID() }">내가 쓴 리뷰</a></li>
+		<li><a href="reviewsILiked">좋아요 한 리뷰</a></li>
+		<li><a href="listsIMarked">제품 찜 목록</a></li>
+	</ul>
+	<br>
 <form action="modifyPersonalInfo?MEM_ID=${personalInfo.getMEM_ID() }" method="post">
 아이디 : ${personalInfo.getMEM_ID() }<br>
 이름 : <input type="text" name="MEM_NAME" value=${personalInfo.getMEM_NAME() }><br>

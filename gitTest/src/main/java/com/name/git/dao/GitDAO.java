@@ -74,6 +74,11 @@ public class GitDAO {
 	public List<ReviewVO> reviewLists(ReviewVO reviewVO) {
 		return sqlSession.selectList("Git.reviewLists", reviewVO);
 	}
+
+	//내가 작성한 리뷰 보기
+	public List<ReviewVO> reviewsIWrote(ReviewVO reviewVO) {
+		return sqlSession.selectList("Git.reviewsIWrote", reviewVO);
+	}
 	
 	
 }

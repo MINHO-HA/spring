@@ -4,35 +4,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-	<form action="joinForm" method="POST" name="frm" id="frm">
+	<form action="joinForm" method="POST">
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="MEM_ID">
+				<td><input type="text" name="MEM_ID" placeholder="아이디 입력" required="required">
 				</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="MEM_PW"></td>
+				<td><input type="password" name="MEM_PW" placeholder="비밀번호 입력" required="required"></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="MEM_NAME"></td>
+				<td><input type="text" name="MEM_NAME" placeholder="이름 입력" required="required"></td>
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td><input type="text" name="MEM_AGE"></td>
+				<td><input type="text" name="MEM_AGE" placeholder="나이 입력" required="required"></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="email" name="MEM_EMAIL"></td>
+				<td><input type="email" name="MEM_EMAIL" placeholder="이메일 입력" required="required"></td>
 			</tr>
 			<tr>
 				<td>성별</td>
@@ -54,7 +49,7 @@
 			</tr>
 			<tr>
 				<td>건강상태</td>
-				<td><input type="text" name="MEM_STATE"></td>
+				<td><input type="text" name="MEM_STATE" placeholder="건강상태 입력"></td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="회원가입"></td>
