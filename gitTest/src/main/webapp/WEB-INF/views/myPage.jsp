@@ -20,8 +20,8 @@
 				<li><a href="personalInfo?id=${sessionScope.session_id }">개인정보
 						수정</a></li>
 				<li><a href="reviewsIWrote">내가 쓴 리뷰</a></li>
-				<li><a href="reviewsILike">좋아요 한 리뷰</a></li>
-				<li><a href="selectedLists">제품 찜 목록</a></li>
+				<li><a href="reviewsILiked">좋아요 한 리뷰</a></li>
+				<li><a href="itemsIMarked">제품 찜 목록</a></li>
 			</ul>
 			<br>
 		</c:when>

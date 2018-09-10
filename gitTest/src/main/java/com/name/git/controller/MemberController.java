@@ -1,8 +1,6 @@
 package com.name.git.controller;
 
 
-
-
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,16 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.name.git.service.GitService;
-import com.name.git.vo.ItemVO;
+import com.name.git.service.MemberService;
 import com.name.git.vo.MemberVO;
-import com.name.git.vo.ReviewVO;
+
 
 @Controller
-public class GitController {
+public class MemberController {
 
 	@Autowired
-	private GitService gitService;
+	private MemberService memberService;
 	private ModelAndView modelAndView;
 	
 	@Autowired
@@ -74,7 +71,7 @@ public class GitController {
 	public ModelAndView join(@ModelAttribute MemberVO memberVO) {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = gitService.memberJoin(memberVO);
+		modelAndView = memberService.memberJoin(memberVO);
 		
 		return modelAndView;
 	}
@@ -86,7 +83,7 @@ public class GitController {
 	public ModelAndView memberLogin(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = gitService.memberLogin(memberVO, response);
+		modelAndView = memberService.memberLogin(memberVO, response);
 		
 		return modelAndView;	
 	}
@@ -98,7 +95,7 @@ public class GitController {
 	public ModelAndView passwordChecking(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = gitService.passwordChecking(memberVO, response);
+		modelAndView = memberService.passwordChecking(memberVO, response);
 		
 		return modelAndView;
 	}
@@ -121,7 +118,7 @@ public class GitController {
 	public ModelAndView personalInfo(HttpServletResponse response, @RequestParam("id") String id) {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = gitService.personalInfo(id);
+		modelAndView = memberService.personalInfo(id);
 		
 		return modelAndView;
 	}
@@ -133,55 +130,13 @@ public class GitController {
 	public ModelAndView modifyPersonalInfo(@ModelAttribute MemberVO memberVO) {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = gitService.modifyPersonalInfo(memberVO);
+		modelAndView = memberService.modifyPersonalInfo(memberVO);
 		
 		return modelAndView;
 	}
 	
 	
-	
-	//메인에서 검색어 입력시 처리
-	@RequestMapping(value="/searchingSth", method = RequestMethod.GET)
-	public ModelAndView searchingSth(@RequestParam("MEM_ID") String id, @ModelAttribute ItemVO itemVO) {
-		
-		modelAndView = new ModelAndView();
-		modelAndView = gitService.searchingKeyword(id, itemVO);
-		
-		return modelAndView;
-	}
 
-	
-	
-	//제품 상세 페이지(이미지 클릭시)
-	@RequestMapping(value="/viewItem", method = RequestMethod.GET)
-	public ModelAndView viewItem(@ModelAttribute ReviewVO reviewVO) {
-		
-		modelAndView = new ModelAndView();
-		modelAndView = gitService.viewItem(reviewVO);
-		
-		return modelAndView;
-	}
-	
-	
-	
-	//리뷰작성 페이지로 이동
-	@RequestMapping(value = "/writeReview" ,  method = RequestMethod.GET)
-	public String writeReview() {
-		
-		return "writeReviewForm";
-	}
-	
-	
-	
-	//리뷰 작성
-	@RequestMapping(value="/reviewWritingForm", method = RequestMethod.POST)
-	public ModelAndView reviewWriting(@ModelAttribute ReviewVO reviewVO, HttpServletResponse response) throws IOException {
-		
-		modelAndView = new ModelAndView();
-		modelAndView = gitService.reviewWriting(reviewVO, response);
-		
-		return modelAndView;
-	}
 	
 	
 }

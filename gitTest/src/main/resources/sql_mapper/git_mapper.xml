@@ -46,7 +46,7 @@
 	</select>
 	
 	<!-- 리뷰작성 -->
-	<insert id="reviewWriting" parameterType="Review">
+	<insert id="writeReview" parameterType="Review">
 		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{MEM_ID}, #{REVIEW_TITLE}, #{REVIEW_CONTENT}, #{ITEM_ID}, 0, #{REVIEW_GRADE})
 		<selectKey keyProperty="REVIEW_ID" resultType="int" order="AFTER">
 			SELECT REVIEW_SEQ.CURRVAL FROM DUAL

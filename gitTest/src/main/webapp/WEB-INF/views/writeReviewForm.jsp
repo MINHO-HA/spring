@@ -16,7 +16,7 @@
 %>
 <body>
 	<h2>리뷰작성 페이지</h2>
-	<form action="reviewWritingForm" method="POST">
+	<form action="writeReviewForm" method="POST">
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
 		<input type="hidden" name="ITEM_ID" value="<%=request.getParameter("ITEM_ID")%>"> 
 		제목 :

@@ -38,7 +38,7 @@
 	<br>
 	<br>
 
-	<form action="searchingSth" method="get">
+	<form action="searchItem" method="get">
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
 		<select name="ITEM_CATEGORY">
 			<option value="hair">헤어</option>

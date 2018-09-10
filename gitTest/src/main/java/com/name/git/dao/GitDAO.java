@@ -66,8 +66,8 @@ public class GitDAO {
 
 
 	//리뷰 작성 처리
-	public int reviewWriting(ReviewVO reviewVO) {
-		return sqlSession.insert("Git.reviewWriting", reviewVO);
+	public int writeReview(ReviewVO reviewVO) {
+		return sqlSession.insert("Git.writeReview", reviewVO);
 	}
 
 	//리뷰 목록 보기
