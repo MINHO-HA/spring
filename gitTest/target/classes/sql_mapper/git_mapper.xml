@@ -76,11 +76,12 @@
 		</selectKey>
 	</insert>
 	
-	<!-- 내가 좋아요한 리뷰보기 TARGET_ID로 LIKE_ID 찾기 -->
+	<!-- 내가 좋아요한 리뷰보기 (TARGET_ID로 LIKE_ID 값 구하기) -->
 	<select id="reviewsILiked" parameterType="Liked" resultType="Liked">
 		SELECT REVIEW_ID FROM LIKED WHERE TARGET_MEM_ID = #{TARGET_MEM_ID}
 	</select>
 	
+	<!-- 내가 좋아요한 리뷰보기 (리스트로 리턴) -->
 	<select id="reviewsILiked2" parameterType="Review" resultType="Review">
 		SELECT * FROM REVIEW WHERE REVIEW_ID = #{REVIEW_ID}
 	</select>
@@ -92,6 +93,16 @@
 			SELECT SELECTED_SEQ.CURRVAL FROM DUAL
 		</selectKey>
 	</insert>
+	
+	<!-- 내가 찜한 리뷰보기 (MEM_ID로 ITEM_ID 값 구하기) -->
+	<select id="listsIMarked" parameterType="Selected" resultType="Selected">
+		SELECT ITEM_ID FROM SELECTED WHERE MEM_ID = #{MEM_ID}
+	</select>
+	
+	<!-- 내가 찜한 리뷰보기 (리스트로 리턴)-->
+	<select id="listsIMarked2" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE ITEM_ID = #{ITEM_ID}
+	</select>
 </mapper>
 
 

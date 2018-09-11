@@ -95,12 +95,12 @@ public class GitDAO {
 		return sqlSession.insert("Git.raiseLike2", likedVO);
 	}
 
-	//내가 좋아요한 리뷰 보기 (해당 아이디 REVIEW_ID 값 구하기)
+	//내가 좋아요한 리뷰 보기 (해당 아이디로 REVIEW_ID 값 구하기)
 	public LikedVO reviewsILiked(String id) {
 		return sqlSession.selectOne("Git.reviewsILiked", id);
 	}
 
-	//내가 좋아요한 리뷰보기 (좋아요한 리뷰 리스트로 불러오기)
+	//내가 좋아요한 리뷰보기 (REVIEW_ID 값으로 좋아요한 리뷰 리스트로 불러오기)
 	public List<ReviewVO> reviewsILiked2(int review_ID) {
 		return sqlSession.selectList("Git.reviewsILiked2", review_ID);
 	}
@@ -108,6 +108,16 @@ public class GitDAO {
 	//찜하기
 	public int markItem(SelectedVO selectedVO) {
 		return sqlSession.insert("Git.markItem", selectedVO);
+	}
+
+	//내가 찜한 목록 보기 (해당 아이디로 ITEM_ID 값 구하기)
+	public SelectedVO listsIMarked(String id) {
+		return sqlSession.selectOne("Git.listsIMarked", id);
+	}
+
+	//내가 찜한 목록 보기 (ITEM_ID 값으로 리스트로 다 불러오기)
+	public List<ItemVO> listsIMarked2(int item_ID) {
+		return sqlSession.selectList("Git.listsIMarked2", item_ID);
 	}
 	
 }

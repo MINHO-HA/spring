@@ -37,7 +37,7 @@ ${sessionScope.session_id }님의
 		<li><a href="personalInfo?id=${sessionScope.session_id }">개인정보 수정</a></li>
 		<li><a href="reviewsIWrote?MEM_ID=${sessionScope.session_id }">내가 쓴 리뷰</a></li>
 		<li style="font-weight: bold;">좋아요 한 리뷰</li>
-		<li><a href="listsIMarked">제품 찜 목록</a></li>
+		<li><a href="listsIMarked?MEM_ID=${sessionScope.session_id }">제품 찜 목록</a></li>
 	</ul>
 	<br>
 <h2>내가 좋아요한 리뷰</h2>

@@ -27,6 +27,7 @@ public class ItemService {
 	private MemberVO memberVO;
 	private ItemVO itemVO;
 	private LikedVO likedVO;
+	private SelectedVO selectedVO;
 	
 	//제품 검색시
 	public ModelAndView searchItem(String id, ItemVO itemVO) {
@@ -163,6 +164,22 @@ public class ItemService {
 		} else {
 			modelAndView.setViewName("redirect:/viewItem?ITEM_ID="+selectedVO.getITEM_ID());
 		}
+		
+		return modelAndView;
+	}
+
+
+	//내가 찜한 목록 보기
+	public ModelAndView listsIMarked(String id) {
+		
+		modelAndView = new ModelAndView();
+		
+		selectedVO = new SelectedVO();
+		selectedVO = gitDAO.listsIMarked(id);
+		
+		List<ItemVO> list = gitDAO.listsIMarked2(selectedVO.getITEM_ID());
+		modelAndView.addObject("list", list);
+		modelAndView.setViewName("listsIMarked");
 		
 		return modelAndView;
 	}

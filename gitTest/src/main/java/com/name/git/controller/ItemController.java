@@ -124,6 +124,15 @@ public class ItemController {
 		return modelAndView;
 	}
 	
+	//내가 찜한 목록 보기
+	@RequestMapping(value="/listsIMarked", method = RequestMethod.GET)
+	public ModelAndView listsIMarked(@RequestParam("MEM_ID") String id) {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.listsIMarked(id);
+		
+		return modelAndView;
+	}
 	
 	
 	
