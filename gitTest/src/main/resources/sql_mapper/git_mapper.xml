@@ -55,12 +55,34 @@
 	
 	<!-- 리뷰 리스트 -->
 	<select id="reviewLists" parameterType="Review" resultType="Review">
-		SELECT * FROM REVIEW
+		SELECT * FROM REVIEW WHERE ITEM_ID = #{ITEM_ID}
 	</select>
 	
 	<!-- 내가 작성한 리뷰 리스트 -->
 	<select id="reviewsIWrote" parameterType="Review" resultType="Review">
 		SELECT * FROM REVIEW WHERE MEM_ID = #{MEM_ID}
+	</select>
+	
+	<!-- 좋아요 올리기 쿼리 -->
+	<update id="raiseLike" parameterType="int">
+		UPDATE REVIEW SET REVIEW_LIKE = REVIEW_LIKE +1 WHERE REVIEW_ID = #{REVIEW_ID}
+	</update> 
+	
+	<!-- 좋아요 올렸을 때 Liked 테이블 insert -->
+	<insert id="raiseLike2" parameterType="LIked">
+		INSERT INTO LIKED VALUES(LIKED_SEQ.NEXTVAL, #{REVIEW_ID}, #{TARGET_MEM_ID}, #{MEM_ID})
+		<selectKey keyProperty="LIKE_ID" resultType="int" order="AFTER">
+			SELECT LIKED_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
+	
+	<!-- 내가 좋아요한 리뷰보기 TARGET_ID로 LIKE_ID 찾기 -->
+	<select id="reviewsILiked" parameterType="Liked" resultType="Liked">
+		SELECT REVIEW_ID FROM LIKED WHERE TARGET_MEM_ID = #{TARGET_MEM_ID}
+	</select>
+	
+	<select id="reviewsILiked2" parameterType="Review" resultType="Review">
+		SELECT * FROM REVIEW WHERE REVIEW_ID = #{REVIEW_ID}
 	</select>
 	
 </mapper>

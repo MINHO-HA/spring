@@ -36,8 +36,8 @@ ul{
 
 	<ul>
 		<li style="font-weight: bold;">개인정보 수정</li>
-		<li><a href="reviewsIWrote?MEM_ID=${personalInfo.getMEM_ID() }">내가 쓴 리뷰</a></li>
-		<li><a href="reviewsILiked">좋아요 한 리뷰</a></li>
+		<li><a href="reviewsIWrote?MEM_ID=${sessionScope.session_id }">내가 쓴 리뷰</a></li>
+		<li><a href="reviewsILiked?TARGET_MEM_ID=${sessionScope.session_id }">좋아요 한 리뷰</a></li>
 		<li><a href="listsIMarked">제품 찜 목록</a></li>
 	</ul>
 	<br>

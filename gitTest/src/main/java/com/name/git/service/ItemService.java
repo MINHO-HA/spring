@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.dao.GitDAO;
 import com.name.git.vo.ItemVO;
+import com.name.git.vo.LikedVO;
 import com.name.git.vo.MemberVO;
 import com.name.git.vo.ReviewVO;
 
@@ -24,7 +25,7 @@ public class ItemService {
 	private ModelAndView modelAndView;
 	private MemberVO memberVO;
 	private ItemVO itemVO;
-	
+	private LikedVO likedVO;
 	
 	//제품 검색시
 	public ModelAndView searchItem(String id, ItemVO itemVO) {
@@ -80,8 +81,6 @@ public class ItemService {
 			out.println("</script>");
 			out.close();
 		} else {
-			//리뷰변수 넣어야되고
-			//쿼리문에서 충분한 벨류값 넣어야되고 
 			modelAndView.setViewName("redirect:/viewItem?ITEM_ID="+reviewVO.getITEM_ID()+"&MEM_ID="+reviewVO.getMEM_ID());
 		}
 		
@@ -100,5 +99,51 @@ public class ItemService {
 		
 		return modelAndView;
 	}
+
+
+	//좋아요 올리기
+	public ModelAndView raiseLike(ReviewVO reviewVO, LikedVO likedVO,HttpServletResponse response) throws IOException {
+		
+		modelAndView = new ModelAndView();
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = gitDAO.raiseLike(reviewVO);
+		
+		if(result == 0) {
+			out.println("<script>"); 
+			out.println("alert('좋아요 올리기 실패');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		} else {
+			gitDAO.raiseLike2(likedVO);
+			modelAndView.setViewName("redirect:/viewItem?ITEM_ID="+reviewVO.getITEM_ID());
+		}
+		
+		return modelAndView;
+	}
+
+
+	//내가 좋아요한 리뷰 보기 (해당 아이디 REVIEW_ID 값 구하기)
+	public ModelAndView reviewsILiked(String id) {
+
+
+		modelAndView = new ModelAndView();
+		
+		likedVO = new LikedVO();
+		likedVO = gitDAO.reviewsILiked(id);
+		
+		List<ReviewVO> list = gitDAO.reviewsILiked2(likedVO.getREVIEW_ID());
+		modelAndView.addObject("list", list);
+		modelAndView.setViewName("reviewsILiked");
+		
+		return modelAndView;
+	}
+
+
+
+
 
 }

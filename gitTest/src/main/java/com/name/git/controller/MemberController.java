@@ -39,32 +39,32 @@ public class MemberController {
 	
 	
 	
-	//로그인 페이지
-	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-	public String login() {
-		
-		return "loginPage";	
-	}
-	
-	
-	
 	//회원가입 페이지로 이동
 	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
 	public String signUp() {
 		
 		return "signUp";
 	}
-	
-	
-	
+		
+		
+		
 	//회원가입 페이지
 	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute MemberVO memberVO) {
-		
+			
 		modelAndView = new ModelAndView();
 		modelAndView = memberService.memberJoin(memberVO);
 		
 		return modelAndView;
+	}	
+		
+		
+		
+	//로그인 페이지
+	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
+	public String login() {
+		
+		return "loginPage";	
 	}
 	
 	
@@ -134,9 +134,6 @@ public class MemberController {
 		
 		return modelAndView;
 	}
-	
-	
-	
 	
 	
 }

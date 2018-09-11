@@ -18,7 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.service.ItemService;
 import com.name.git.vo.ItemVO;
-
+import com.name.git.vo.LikedVO;
 import com.name.git.vo.ReviewVO;
 
 @Controller
@@ -83,6 +83,29 @@ public class ItemController {
 		
 		modelAndView = new ModelAndView();
 		modelAndView = itemService.reviewsIWrote(reviewVO);
+		
+		return modelAndView;
+	}
+	
+	
+	
+	//리뷰 좋아요 올리기
+	@RequestMapping(value="/raiseLike", method = RequestMethod.GET)
+	public ModelAndView raiseLike(@ModelAttribute ReviewVO reviewVO, @ModelAttribute LikedVO likedVO, HttpServletResponse response) throws IOException {
+
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.raiseLike(reviewVO, likedVO, response);
+		
+		return modelAndView;
+	}
+	
+	//내가 좋아요한 리뷰
+	@RequestMapping(value="/reviewsILiked", method = RequestMethod.GET)
+	public ModelAndView reviewsILiked(@RequestParam("TARGET_MEM_ID") String id) {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.reviewsILiked(id);
+		
 		
 		return modelAndView;
 	}

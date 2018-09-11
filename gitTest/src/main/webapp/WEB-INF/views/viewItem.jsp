@@ -38,7 +38,8 @@
 		<a href=""> ${reviewLists.REVIEW_CONTENT }</a>
 		<br>
 		좋아요 갯수 : 	${reviewLists.REVIEW_LIKE }<br>
-		<input type="button" onclick="location.href=''" value="좋아요 버튼">
+		<%-- <input type="button" onclick="location.href='raiseLike?REVIEW_ID=${reviewLists.REVIEW_ID }&ITEM_ID=${itemView.getITEM_ID() }'" value="좋아요 버튼"> --%>
+		<input type="button" onclick="location.href='raiseLike?REVIEW_ID=${reviewLists.REVIEW_ID }&ITEM_ID=${itemView.getITEM_ID() }&MEM_ID=${sessionScope.session_id }&TARGET_MEM_ID=${reviewLists.MEM_ID }'" value="좋아요 버튼">
 		<br>
 		<br>
 		<br>
