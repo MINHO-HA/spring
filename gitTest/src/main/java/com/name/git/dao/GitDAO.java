@@ -10,6 +10,7 @@ import com.name.git.vo.ItemVO;
 import com.name.git.vo.LikedVO;
 import com.name.git.vo.MemberVO;
 import com.name.git.vo.ReviewVO;
+import com.name.git.vo.SelectedVO;
 
 @Repository
 public class GitDAO {
@@ -99,10 +100,14 @@ public class GitDAO {
 		return sqlSession.selectOne("Git.reviewsILiked", id);
 	}
 
-	//
+	//내가 좋아요한 리뷰보기 (좋아요한 리뷰 리스트로 불러오기)
 	public List<ReviewVO> reviewsILiked2(int review_ID) {
 		return sqlSession.selectList("Git.reviewsILiked2", review_ID);
 	}
 	
+	//찜하기
+	public int markItem(SelectedVO selectedVO) {
+		return sqlSession.insert("Git.markItem", selectedVO);
+	}
 	
 }

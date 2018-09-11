@@ -45,7 +45,7 @@ ${sessionScope.session_id }님의
 		리뷰 번호 : ${list.REVIEW_ID }<br>
 		리뷰 제목 : ${list.REVIEW_TITLE }<br>
 		좋아요 수 : ${list.REVIEW_LIKE }<br>
-		내가 준 별점 : ${list.REVIEW_GRADE }<br>
+		작성자 : ${list.MEM_ID }<br>
 		<br>
 		<br>
 		<br>

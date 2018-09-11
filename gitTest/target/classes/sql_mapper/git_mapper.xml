@@ -85,6 +85,13 @@
 		SELECT * FROM REVIEW WHERE REVIEW_ID = #{REVIEW_ID}
 	</select>
 	
+	<!-- 찜하기 -->
+	<insert id="markItem" parameterType="Selected">
+		INSERT INTO SELECTED VALUES(SELECTED_SEQ.NEXTVAL, #{ITEM_ID}, #{MEM_ID})
+		<selectKey keyProperty="SEL_ID" resultType="int" order="AFTER">
+			SELECT SELECTED_SEQ.CURRVAL FROM DUAL
+		</selectKey>
+	</insert>
 </mapper>
 
 

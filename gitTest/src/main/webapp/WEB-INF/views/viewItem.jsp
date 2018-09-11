@@ -26,12 +26,12 @@
 	<br>
 	<h2>제품 상세 페이지</h2>
 	<img src="#" alt="사진">
+	<input type="button" onclick="location.href='markItem?ITEM_ID=${itemView.getITEM_ID() }&MEM_ID=${sessionScope.session_id }'" value="찜하기">
 	<br> 제품 아이디 : ${itemView.getITEM_ID() }
 	<br> 제품 이름 : ${itemView.getITEM_NAME() }
 	<br> 제품 브랜드 : ${itemView.getITEM_BRAND() }
+	<br><br><br>
 	<br> 리뷰 :
-	<br>
-	<br>
 	<br>
 	<c:forEach var="reviewLists" items="${reviewLists }">
 		리뷰내용 : 

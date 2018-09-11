@@ -16,6 +16,7 @@ import com.name.git.vo.ItemVO;
 import com.name.git.vo.LikedVO;
 import com.name.git.vo.MemberVO;
 import com.name.git.vo.ReviewVO;
+import com.name.git.vo.SelectedVO;
 
 @Service
 public class ItemService {
@@ -138,6 +139,30 @@ public class ItemService {
 		List<ReviewVO> list = gitDAO.reviewsILiked2(likedVO.getREVIEW_ID());
 		modelAndView.addObject("list", list);
 		modelAndView.setViewName("reviewsILiked");
+		
+		return modelAndView;
+	}
+
+
+	//찜하기
+	public ModelAndView markItem(SelectedVO selectedVO, HttpServletResponse response) throws IOException {
+
+		modelAndView = new ModelAndView();
+		
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		int result = gitDAO.markItem(selectedVO);
+		
+		if(result == 0) {
+			out.println("<script>");
+			out.println("alert('찜 실패');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+		} else {
+			modelAndView.setViewName("redirect:/viewItem?ITEM_ID="+selectedVO.getITEM_ID());
+		}
 		
 		return modelAndView;
 	}

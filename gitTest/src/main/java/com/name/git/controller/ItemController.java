@@ -20,6 +20,7 @@ import com.name.git.service.ItemService;
 import com.name.git.vo.ItemVO;
 import com.name.git.vo.LikedVO;
 import com.name.git.vo.ReviewVO;
+import com.name.git.vo.SelectedVO;
 
 @Controller
 public class ItemController {
@@ -99,6 +100,8 @@ public class ItemController {
 		return modelAndView;
 	}
 	
+	
+	
 	//내가 좋아요한 리뷰
 	@RequestMapping(value="/reviewsILiked", method = RequestMethod.GET)
 	public ModelAndView reviewsILiked(@RequestParam("TARGET_MEM_ID") String id) {
@@ -106,8 +109,22 @@ public class ItemController {
 		modelAndView = new ModelAndView();
 		modelAndView = itemService.reviewsILiked(id);
 		
+		return modelAndView;
+	}
+	
+	
+	
+	//찜하기
+	@RequestMapping(value="/markItem", method = RequestMethod.GET)
+	public ModelAndView markItem(@ModelAttribute SelectedVO selectedVO, HttpServletResponse response) throws IOException {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.markItem(selectedVO, response);
 		
 		return modelAndView;
 	}
+	
+	
+	
 	
 }
