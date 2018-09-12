@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>메인 페이지</h1>
 	<a href="./">logo(메인이동)</a>
 	<c:choose>
 		<c:when test="${not empty sessionScope.session_id }">
@@ -39,7 +40,10 @@
 	<img src="1.jpg">이미지 설명~~~~~
 	<br>
 	<br>
-
+	<br>
+	<br>
+	<br>
+	<br>
 	<form action="searchItem" method="get">
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
 		<select name="ITEM_CATEGORY">

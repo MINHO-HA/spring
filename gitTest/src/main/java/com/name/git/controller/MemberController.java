@@ -51,7 +51,20 @@ public class MemberController {
 	//회원가입 페이지
 	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute MemberVO memberVO) {
-			
+		
+		//MEMBER 테이블의 AGE_ID위한 처리과정
+		if(memberVO.getMEM_AGE() >= 0 && memberVO.getMEM_AGE() < 20 ) {
+			memberVO.setAGE_ID(1);
+		} else if (memberVO.getMEM_AGE() >= 20 && memberVO.getMEM_AGE() < 30 ) {
+			memberVO.setAGE_ID(2);
+		} else if (memberVO.getMEM_AGE() >= 30 && memberVO.getMEM_AGE() < 40 ) {
+			memberVO.setAGE_ID(3);
+		} else if (memberVO.getMEM_AGE() >= 40 && memberVO.getMEM_AGE() < 50 ) {
+			memberVO.setAGE_ID(4);
+		} else {
+			memberVO.setAGE_ID(5);
+		}
+		
 		modelAndView = new ModelAndView();
 		modelAndView = memberService.memberJoin(memberVO);
 		

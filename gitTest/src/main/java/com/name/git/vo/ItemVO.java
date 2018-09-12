@@ -6,42 +6,80 @@ public class ItemVO {
 	private String ITEM_NAME;
 	private String ITEM_BRAND;
 	private String ITEM_CATEGORY;
+	private int AGE_ID;
+	private int SKINTYPE_ID;
+	private int GENDER_ID;
 	
 	public ItemVO(){
 		
 	}
-	
-	public ItemVO(int iTEM_ID, String iTEM_NAME, String iTEM_BRAND, String iTEM_CATEGORY) {
+
+	public ItemVO(int iTEM_ID, String iTEM_NAME, String iTEM_BRAND, String iTEM_CATEGORY, int aGE_ID, int sKINTYPE_ID,
+			int gENDER_ID) {
 		ITEM_ID = iTEM_ID;
 		ITEM_NAME = iTEM_NAME;
 		ITEM_BRAND = iTEM_BRAND;
 		ITEM_CATEGORY = iTEM_CATEGORY;
+		AGE_ID = aGE_ID;
+		SKINTYPE_ID = sKINTYPE_ID;
+		GENDER_ID = gENDER_ID;
 	}
+
 	
 	public int getITEM_ID() {
 		return ITEM_ID;
 	}
+
 	public void setITEM_ID(int iTEM_ID) {
 		ITEM_ID = iTEM_ID;
 	}
+
 	public String getITEM_NAME() {
 		return ITEM_NAME;
 	}
+
 	public void setITEM_NAME(String iTEM_NAME) {
 		ITEM_NAME = iTEM_NAME;
 	}
+
 	public String getITEM_BRAND() {
 		return ITEM_BRAND;
 	}
+
 	public void setITEM_BRAND(String iTEM_BRAND) {
 		ITEM_BRAND = iTEM_BRAND;
 	}
+
 	public String getITEM_CATEGORY() {
 		return ITEM_CATEGORY;
 	}
+
 	public void setITEM_CATEGORY(String iTEM_CATEGORY) {
 		ITEM_CATEGORY = iTEM_CATEGORY;
 	}
-	
-	
+
+	public int getAGE_ID() {
+		return AGE_ID;
+	}
+
+	public void setAGE_ID(int aGE_ID) {
+		AGE_ID = aGE_ID;
+	}
+
+	public int getSKINTYPE_ID() {
+		return SKINTYPE_ID;
+	}
+
+	public void setSKINTYPE_ID(int sKINTYPE_ID) {
+		SKINTYPE_ID = sKINTYPE_ID;
+	}
+
+	public int getGENDER_ID() {
+		return GENDER_ID;
+	}
+
+	public void setGENDER_ID(int gENDER_ID) {
+		GENDER_ID = gENDER_ID;
+	}
+
 }

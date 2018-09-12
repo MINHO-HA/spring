@@ -14,9 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.name.git.dao.GitDAO;
 import com.name.git.vo.ItemVO;
 import com.name.git.vo.LikedVO;
-import com.name.git.vo.MemberVO;
 import com.name.git.vo.ReviewVO;
 import com.name.git.vo.SelectedVO;
+
 
 @Service
 public class ItemService {
@@ -24,22 +24,25 @@ public class ItemService {
 	@Autowired
 	private GitDAO gitDAO;
 	private ModelAndView modelAndView;
-	private MemberVO memberVO;
-	private ItemVO itemVO;
+	private ItemVO itemVO2;
 	private LikedVO likedVO;
 	private SelectedVO selectedVO;
 	
+	
 	//제품 검색시
-	public ModelAndView searchItem(String id, ItemVO itemVO) {
+	public ModelAndView searchItem(ItemVO itemVO) {
 		
 		modelAndView = new ModelAndView();
 		
-		memberVO = new MemberVO();
-		memberVO = gitDAO.whenSearchingFollowingInfo(id);
-		
+		/*memberVO = new MemberVO();
+		memberVO = gitDAO.whenSearchingFollowingInfo(id);*/
+		System.out.println("검색시++++++++++++++++++");
+		System.out.println(itemVO.getITEM_NAME());
+		System.out.println(itemVO.getITEM_CATEGORY());
+		System.out.println("검색시++++++++++++++++++");
 		List<ItemVO> list = gitDAO.searchedResults(itemVO);
 		
-		modelAndView.addObject("personalInfo", memberVO);
+		/*modelAndView.addObject("personalInfo", memberVO);*/
 		modelAndView.addObject("searchKeyword", list);
 		modelAndView.setViewName("searchPage");
 		
@@ -47,19 +50,48 @@ public class ItemService {
 	}
 	
 	
+	//검색 필터 처리
+		public ModelAndView searchFilter(ItemVO itemVO,HttpServletResponse response) throws IOException {
+			
+			
+			response.setContentType("text/html; charset=UTF-8");
+			modelAndView = new ModelAndView();
+			
+			
+			if(itemVO.getGENDER_ID() == 1 || itemVO.getGENDER_ID() == 2) {
+				itemVO2 = gitDAO.searchFilter(itemVO);
+			} else if(itemVO.getAGE_ID() != 0){
+				itemVO2 = gitDAO.searchFilter2(itemVO);
+			} else if(itemVO.getSKINTYPE_ID() != 0) {
+				itemVO2 = gitDAO.searchFilter3(itemVO);
+			}
+			
+			System.out.println("==========");
+			System.out.println("성별번호 : "+itemVO2.getGENDER_ID());
+			System.out.println("나이번호 : "+itemVO2.getAGE_ID());
+			System.out.println("스킨번호 : "+itemVO2.getSKINTYPE_ID());
+			System.out.println("검색어 : "+itemVO2.getITEM_NAME());
+			System.out.println("==========");
+			
+			/*modelAndView.setViewName("redirect:/searchItem?GENDER_ID="+itemVO.getGENDER_ID()+"&AGE_ID="+itemVO.getAGE_ID()+"&SKINTYPE_ID="+itemVO.getSKINTYPE_ID());*/
+			modelAndView.setViewName("redirect:/searchItem?ITEM_CATEGORY="+itemVO2.getITEM_CATEGORY()+"&ITEM_NAME="+itemVO2.getITEM_NAME());
+			
+			return modelAndView;
+		}
+	
 	
 	//제품 상세페이지
 	public ModelAndView viewItem(ReviewVO reviewVO) {
 		
 		modelAndView = new ModelAndView();
 		
-		itemVO = new ItemVO();
-		itemVO = gitDAO.viewItem(reviewVO);
+		itemVO2 = new ItemVO();
+		itemVO2 = gitDAO.viewItem(reviewVO);
 		
 		List<ReviewVO> list = gitDAO.reviewLists(reviewVO);
 		modelAndView.addObject("reviewLists", list);
 		
-		modelAndView.addObject("itemView", itemVO);
+		modelAndView.addObject("itemView", itemVO2);
 		modelAndView.setViewName("viewItem");
 		
 		return modelAndView;
@@ -136,7 +168,9 @@ public class ItemService {
 		
 		likedVO = new LikedVO();
 		likedVO = gitDAO.reviewsILiked(id);
-		
+		System.out.println("=========================");
+		System.out.println("====================="+likedVO.getREVIEW_ID());
+		System.out.println("=========================");
 		List<ReviewVO> list = gitDAO.reviewsILiked2(likedVO.getREVIEW_ID());
 		modelAndView.addObject("list", list);
 		modelAndView.setViewName("reviewsILiked");
@@ -183,6 +217,9 @@ public class ItemService {
 		
 		return modelAndView;
 	}
+
+
+	
 
 
 

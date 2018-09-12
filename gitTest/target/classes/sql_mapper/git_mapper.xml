@@ -5,7 +5,7 @@
 
 	<!-- 회원가입 -->
 	<insert id="memberJoin" parameterType="Member">
-		INSERT INTO MEMBER VALUES(#{MEM_ID}, #{MEM_PW}, #{MEM_NAME}, #{MEM_AGE}, #{MEM_EMAIL}, #{GENDER_ID}, #{SKINTYPE_ID}, #{MEM_STATE})
+		INSERT INTO MEMBER VALUES(#{MEM_ID}, #{MEM_PW}, #{MEM_NAME}, #{MEM_AGE}, #{MEM_EMAIL}, #{GENDER_ID}, #{SKINTYPE_ID}, #{AGE_ID} ,#{MEM_INFO})
 	</insert>
 	
 	<!-- 로그인 -->
@@ -29,16 +29,29 @@
 	</select>
 	
 	<!-- 검색 페이지에 띄워질 개인정보 -->
-	<select id="whenSearchingFollowingInfo" parameterType="Member" resultType="Member">
+	<!-- <select id="whenSearchingFollowingInfo" parameterType="Member" resultType="Member">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
-	</select>
+	</select> -->
 
 	<!-- 메인에서 검색 쿼리문 -->
 	<select id="searchedResults" parameterType="Item" resultType="Item">
 		SELECT * FROM ITEM WHERE ITEM_CATEGORY = #{ITEM_CATEGORY} AND (ITEM_NAME LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_BRAND LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_ID LIKE '%' || #{ITEM_NAME} || '%')
-		<!-- SELECT * FROM ITEM WHERE ITEM_NAME LIKE '%#{ITEM_NAME}%' -->
 	</select>
 	
+	<!-- 검색 필터 처리(GENDER) -->
+	<select id="searchFilter" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE GENDER_ID = #{GENDER_ID}
+	</select>
+	
+	<!-- 검색 필터 처리(AGE) -->
+	<select id="searchFilter2" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE AGE_ID = #{AGE_ID}
+	</select>
+	
+	<!-- 검색 필터 처리(SKINTYPE) -->
+	<select id="searchFilter3" parameterType="Item" resultType="Item">
+		SELECT * FROM ITEM WHERE SKINTYPE_ID = #{SKINTYPE_ID}
+	</select>
 
 	<!-- 제품상세 -->
 	<select id="viewItem" parameterType="Item" resultType="Item">

@@ -35,10 +35,21 @@ public class ItemController {
 	
 	//메인에서 검색어 입력시 처리
 	@RequestMapping(value="/searchItem", method = RequestMethod.GET)
-	public ModelAndView searchingSth(@RequestParam("MEM_ID") String id, @ModelAttribute ItemVO itemVO) {
+	public ModelAndView searchingSth(@ModelAttribute ItemVO itemVO) {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = itemService.searchItem(id, itemVO);
+		modelAndView = itemService.searchItem(itemVO);
+		
+		return modelAndView;
+	}
+	
+	
+	//검색필터 처리
+	@RequestMapping(value="/searchFilter", method = RequestMethod.GET)
+	public ModelAndView searchFilter(@ModelAttribute ItemVO itemVO, HttpServletResponse response) throws IOException {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.searchFilter(itemVO, response);
 		
 		return modelAndView;
 	}
@@ -124,7 +135,7 @@ public class ItemController {
 		return modelAndView;
 	}
 	
-	//내가 찜한 목록 보기
+	//내가 찜한 목록 보기(평균별점 추가해야함!)
 	@RequestMapping(value="/listsIMarked", method = RequestMethod.GET)
 	public ModelAndView listsIMarked(@RequestParam("MEM_ID") String id) {
 		

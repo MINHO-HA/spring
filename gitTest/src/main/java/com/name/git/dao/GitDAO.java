@@ -49,15 +49,33 @@ public class GitDAO {
 	}
 	
 	
-	//검색시 따라오는 개인정보 처리
+	/*//검색시 따라오는 개인정보 처리
 	public MemberVO whenSearchingFollowingInfo(String id) {
 		return sqlSession.selectOne("Git.whenSearchingFollowingInfo", id);
-	}
+	}*/
 	
 	
 	//검색 결과 처리
 	public List<ItemVO> searchedResults(ItemVO itemVO) {
 		return sqlSession.selectList("Git.searchedResults", itemVO);
+	}
+	
+	
+	//검색 필터 처리(GENDER)
+	public ItemVO searchFilter(ItemVO itemVO) {
+		return sqlSession.selectOne("Git.searchFilter", itemVO);
+	}
+	
+	
+	//검색 필터 처리(AGE)
+	public ItemVO searchFilter2(ItemVO itemVO) {
+		return sqlSession.selectOne("Git.searchFilter2", itemVO);
+	}
+	
+	
+	//검색 필터 처리(SKINTYPE)
+	public ItemVO searchFilter3(ItemVO itemVO) {
+		return sqlSession.selectOne("Git.searchFilter3", itemVO);
 	}
 	
 	
@@ -119,5 +137,9 @@ public class GitDAO {
 	public List<ItemVO> listsIMarked2(int item_ID) {
 		return sqlSession.selectList("Git.listsIMarked2", item_ID);
 	}
+
+	
+		
+	
 	
 }

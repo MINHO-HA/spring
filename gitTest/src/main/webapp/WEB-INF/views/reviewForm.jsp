@@ -16,6 +16,8 @@
 	request.getParameter("ITEM_ID");
 %>
 <body>
+	<h1>리뷰작성 페이지</h1>
+
 	<a href="./">logo(메인이동)</a>
 	<br>
 	<c:choose>
@@ -33,7 +35,7 @@
 	</c:choose>
 	<br>
 	<br>
-	<h2>리뷰작성 페이지</h2>
+
 	<form action="writeReviewForm" method="POST">
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
 		<input type="hidden" name="ITEM_ID"
@@ -48,6 +50,21 @@
 			<option value="5">5점</option>
 		</select><br> <input type="submit" value="리뷰등록"> <input
 			type="button" value="뒤로가기" onclick="goBack()">
+	</form>
+	<br>
+	<br>
+	<br>
+	<br>
+	<form action="searchItem" method="get">
+		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
+		<select name="ITEM_CATEGORY">
+			<option value="hair">헤어</option>
+			<option value="skincare">스킨케어</option>
+			<option value="cleansing">클렌징</option>
+			<option value="perfume">향수</option>
+		</select> <input type="text" placeholder="검색어 입력" name="ITEM_NAME"> <input
+			type="submit" value="검색">
+
 	</form>
 </body>
 </html>

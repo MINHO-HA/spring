@@ -7,16 +7,17 @@ public class MemberVO {
 	private String MEM_NAME;
 	private int MEM_AGE;
 	private String MEM_EMAIL;
-	private String GENDER_ID;
-	private String SKINTYPE_ID;
-	private String MEM_STATE;
+	private int GENDER_ID;
+	private int SKINTYPE_ID;
+	private int AGE_ID;
+	private String MEM_INFO;
 	
 	public MemberVO(){
 		
 	}
 
-	public MemberVO(String mEM_ID, String mEM_PW, String mEM_NAME, int mEM_AGE, String mEM_EMAIL, String gENDER_ID,
-			String sKINTYPE_ID, String mEM_STATE) {
+	public MemberVO(String mEM_ID, String mEM_PW, String mEM_NAME, int mEM_AGE, String mEM_EMAIL, int gENDER_ID,
+			int sKINTYPE_ID, int aGE_ID, String mEM_INFO) {
 		MEM_ID = mEM_ID;
 		MEM_PW = mEM_PW;
 		MEM_NAME = mEM_NAME;
@@ -24,7 +25,8 @@ public class MemberVO {
 		MEM_EMAIL = mEM_EMAIL;
 		GENDER_ID = gENDER_ID;
 		SKINTYPE_ID = sKINTYPE_ID;
-		MEM_STATE = mEM_STATE;
+		AGE_ID = aGE_ID;
+		MEM_INFO = mEM_INFO;
 	}
 
 	public String getMEM_ID() {
@@ -67,28 +69,38 @@ public class MemberVO {
 		MEM_EMAIL = mEM_EMAIL;
 	}
 
-	public String getGENDER_ID() {
+	public int getGENDER_ID() {
 		return GENDER_ID;
 	}
 
-	public void setGENDER_ID(String gENDER_ID) {
+	public void setGENDER_ID(int gENDER_ID) {
 		GENDER_ID = gENDER_ID;
 	}
 
-	public String getSKINTYPE_ID() {
+	public int getSKINTYPE_ID() {
 		return SKINTYPE_ID;
 	}
 
-	public void setSKINTYPE_ID(String sKINTYPE_ID) {
+	public void setSKINTYPE_ID(int sKINTYPE_ID) {
 		SKINTYPE_ID = sKINTYPE_ID;
 	}
 
-	public String getMEM_STATE() {
-		return MEM_STATE;
+	public int getAGE_ID() {
+		return AGE_ID;
 	}
 
-	public void setMEM_STATE(String mEM_STATE) {
-		MEM_STATE = mEM_STATE;
+	public void setAGE_ID(int aGE_ID) {
+		AGE_ID = aGE_ID;
 	}
+
+	public String getMEM_INFO() {
+		return MEM_INFO;
+	}
+
+	public void setMEM_INFO(String mEM_INFO) {
+		MEM_INFO = mEM_INFO;
+	}
+
+	
 	
 }

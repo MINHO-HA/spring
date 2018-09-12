@@ -7,12 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-ul{
-	list-style: none;	
+ul {
+	list-style: none;
 }
 </style>
 </head>
 <body>
+	<h1>마이 페이지</h1>
+
 	<a href="./">logo(메인이동)</a>
 	<c:choose>
 		<c:when test="${not empty sessionScope.session_id }">
@@ -27,8 +29,9 @@ ul{
 			<input type="button" value="로그아웃" onclick="location.href='./logout'">
 		</c:when>
 	</c:choose>
-	<br><br>
-	
+	<br>
+	<br>
+
 
 	<%-- <c:choose>
 		<c:when test="${not empty myPageCheck }">
@@ -65,10 +68,24 @@ ul{
 	<br> 비밀번호를 다시 한 번 입력해주세요.
 	<form action="passwordForCheck?MEM_ID=${sessionScope.session_id }"
 		method="post">
-		<input type="password" name="MEM_PW" placeholder="비밀번호 입력" required="required"> <input type="submit"
-			value="확인">
+		<input type="password" name="MEM_PW" placeholder="비밀번호 입력"
+			required="required"> <input type="submit" value="확인">
 	</form>
+	<br>
+	<br>
+	<br>
+	<br>
+	<form action="searchItem" method="get">
+		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
+		<select name="ITEM_CATEGORY">
+			<option value="hair">헤어</option>
+			<option value="skincare">스킨케어</option>
+			<option value="cleansing">클렌징</option>
+			<option value="perfume">향수</option>
+		</select> <input type="text" placeholder="검색어 입력" name="ITEM_NAME"> <input
+			type="submit" value="검색">
 
+	</form>
 </body>
 
 
