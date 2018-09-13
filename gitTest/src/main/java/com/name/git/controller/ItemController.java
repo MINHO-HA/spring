@@ -72,7 +72,7 @@ public class ItemController {
 	@RequestMapping(value = "/reviewForm" ,  method = RequestMethod.GET)
 	public String writeReview() {
 		
-		return "reviewForm";
+		return "reviewWrite";
 	}
 	
 	
@@ -135,6 +135,8 @@ public class ItemController {
 		return modelAndView;
 	}
 	
+	
+	
 	//내가 찜한 목록 보기(평균별점 추가해야함!)
 	@RequestMapping(value="/listsIMarked", method = RequestMethod.GET)
 	public ModelAndView listsIMarked(@RequestParam("MEM_ID") String id) {
@@ -146,5 +148,16 @@ public class ItemController {
 	}
 	
 	
+	
+	//리뷰 상세보기
+	@RequestMapping(value="/viewReview", method = RequestMethod.GET)
+	public ModelAndView viewReview(@RequestParam("REVIEW_ID") int id) {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = itemService.viewReview(id);
+		
+		return modelAndView;
+		
+	}
 	
 }

@@ -116,6 +116,10 @@
 	<select id="listsIMarked2" parameterType="Item" resultType="Item">
 		SELECT * FROM ITEM WHERE ITEM_ID = #{ITEM_ID}
 	</select>
+	
+	<!-- 리뷰 상세보기 -->
+	<!-- <select id="viewReview"  -->
+	
 </mapper>
 
 

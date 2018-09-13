@@ -95,7 +95,7 @@
 	<c:forEach var="reviewLists" items="${reviewLists }">
 		<table class="firstTable">
 			<tr class="firstTable">
-				<td class="firstTable"><a href="">
+				<td class="firstTable"><a href="viewReview?REVIEW_ID=${reviewLists.REVIEW_ID }">
 						${reviewLists.REVIEW_CONTENT }</a></td>
 
 				<td class="firstTable">좋아요 갯수 : ${reviewLists.REVIEW_LIKE }<br>

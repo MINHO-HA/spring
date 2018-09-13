@@ -109,7 +109,7 @@ public class MemberController {
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public String myPage() {
 		
-		return "myPage";	
+		return "myPageAuth";	
 	}
 	
 	

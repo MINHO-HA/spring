@@ -27,6 +27,7 @@ public class ItemService {
 	private ItemVO itemVO2;
 	private LikedVO likedVO;
 	private SelectedVO selectedVO;
+	private ReviewVO reviewVO;
 	
 	
 	//제품 검색시
@@ -92,7 +93,7 @@ public class ItemService {
 		modelAndView.addObject("reviewLists", list);
 		
 		modelAndView.addObject("itemView", itemVO2);
-		modelAndView.setViewName("viewItem");
+		modelAndView.setViewName("itemDetail");
 		
 		return modelAndView;
 	}
@@ -129,7 +130,7 @@ public class ItemService {
 		
 		List<ReviewVO> list = gitDAO.reviewsIWrote(reviewVO);
 		modelAndView.addObject("list", list);
-		modelAndView.setViewName("reviewsIWrote");
+		modelAndView.setViewName("myPageReviewWrote");
 		
 		return modelAndView;
 	}
@@ -174,7 +175,7 @@ public class ItemService {
 		System.out.println("=========================");
 		List<ReviewVO> list = gitDAO.reviewsILiked2(likedVO.getREVIEW_ID());
 		modelAndView.addObject("list", list);
-		modelAndView.setViewName("reviewsILiked");
+		modelAndView.setViewName("myPageReviewLiked");
 		
 		return modelAndView;
 	}
@@ -214,7 +215,22 @@ public class ItemService {
 		
 		List<ItemVO> list = gitDAO.listsIMarked2(selectedVO.getITEM_ID());
 		modelAndView.addObject("list", list);
-		modelAndView.setViewName("listsIMarked");
+		modelAndView.setViewName("myPageItemStored");
+		
+		return modelAndView;
+	}
+
+
+	//리뷰 상세보기
+	public ModelAndView viewReview(int id) {
+		
+		modelAndView = new ModelAndView();
+		
+		reviewVO = new ReviewVO();
+		reviewVO = gitDAO.viewReview(id);
+		
+		modelAndView.addObject("viewReview", reviewVO);
+		modelAndView.setViewName("viewReview");
 		
 		return modelAndView;
 	}

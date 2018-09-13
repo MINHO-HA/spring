@@ -138,6 +138,12 @@ public class GitDAO {
 		return sqlSession.selectList("Git.listsIMarked2", item_ID);
 	}
 
+
+	//리뷰 상세보기
+	public ReviewVO viewReview(int id) {
+		return sqlSession.selectOne("Git.viewReview", id);
+	}
+
 	
 		
 	

@@ -99,7 +99,7 @@ public class MemberService {
 		memberVO = gitDAO.personalInfo(id);
 
 		modelAndView.addObject("personalInfo", memberVO);
-		modelAndView.setViewName("personalInfo");
+		modelAndView.setViewName("myPageRivsion");
 
 		return modelAndView;
 	}
@@ -112,7 +112,7 @@ public class MemberService {
 		int result = gitDAO.modifyPersonalInfo(memberVO);
 
 		if (result == 0) {
-			modelAndView.setViewName("personalInfo");
+			modelAndView.setViewName("myPageRivsion");
 		} else {
 			modelAndView.setViewName("main");
 		}
