@@ -42,26 +42,29 @@
 			</tr>
 			<tr>
 				<td>피부타입</td>
-				<td><select name="SKINTYPE_ID">
+				<td>
+					<select name="SKINTYPE_ID">
 						<option value="1">악건성</option>
 						<option value="2">건성</option>
 						<option value="3">중성</option>
 						<option value="4">지성</option>
 						<option value="5">악지성</option>
 						<option value="6">민감성</option>
-				</select></td>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>건강상태</td>
-				<td><input type="text" name="MEM_INFO" placeholder="건강상태 입력"></td>
+				<td>
+					<input type="text" name="MEM_INFO" placeholder="건강상태 입력">
+				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="회원가입"></td>
+				<td colspan="2">
+					<input type="submit" value="회원가입">
+				</td>
 			</tr>
 		</table>
 	</form>
-
-
-
 </body>
 </html>

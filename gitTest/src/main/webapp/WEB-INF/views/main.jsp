@@ -41,8 +41,8 @@
 		</c:when>
 		<c:otherwise>
 			<div style="float: right;">
-				<a href="loginPage">Login</a>&emsp;&emsp;/&emsp;&emsp; <a
-					href="signUp">Sign Up</a>
+				<a href="loginPage">Login</a>&emsp;&emsp;/&emsp;&emsp; 
+				<a href="signUp">Sign Up</a>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -65,25 +65,27 @@
 				<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 				<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 				<br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
-			<td>
+			</td>
 		</tr>
 	</table>
 	<br>
 	<form action="searchItem" method="get">
-
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
 		<table id="secondTable">
 			<tr>
-				<td><select name="ITEM_CATEGORY">
+				<td>
+					<select name="ITEM_CATEGORY">
 						<option value="hair">헤어</option>
 						<option value="skincare">스킨케어</option>
 						<option value="cleansing">클렌징</option>
 						<option value="perfume">향수</option>
-				</select></td>
-				<td><input type="text" placeholder="검색어 입력" name="ITEM_NAME">
-					<input type="submit" value="검색"></td>
+					</select>
+				</td>
+				<td>
+					<input type="text" placeholder="검색어 입력" name="ITEM_NAME">
+					<input type="submit" value="검색">
+				</td>
 			</tr>
-
 		</table>
 	</form>
 

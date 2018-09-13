@@ -59,32 +59,29 @@
 						<option value="skincare">스킨케어</option>
 						<option value="cleansing">클렌징</option>
 						<option value="perfume">향수</option>
-				</select></td>
+				</select>
+				</td>
 				<td><input type="text" placeholder="검색어 입력" name="ITEM_NAME">
-					<input type="submit" value="검색"></td>
+					<input type="submit" value="검색">
+				</td>
 			</tr>
-
 		</table>
 	</form>
 
-
-
-
 	<div id="a">
-		<input type="button"
-			onclick="location.href='markItem?ITEM_ID=${itemView.getITEM_ID() }&MEM_ID=${sessionScope.session_id }'"
-			value="찜하기">&nbsp;&nbsp;<input type="button"
-			onclick="location.href='reviewForm?ITEM_ID=${itemView.getITEM_ID() }'"
-			value="리뷰작성">
+		<input type="button" onclick="location.href='markItem?ITEM_ID=${itemView.getITEM_ID() }&MEM_ID=${sessionScope.session_id }'" value="찜하기">&nbsp;&nbsp;
+		<input type="button" onclick="location.href='reviewForm?ITEM_ID=${itemView.getITEM_ID() }'" value="리뷰작성">
 	</div>
 	<h2>&lt;Product detail&gt;</h2>
 	<table class="firstTable">
 		<tr class="firstTable">
-			<td class="firstTable"><img src="#" alt="사진">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<td class="firstTable">
+			<img src="#" alt="사진">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</td>
-			<td class="firstTable">제품 아이디 : ${itemView.getITEM_ID() }<br>
-				제품 이름 : ${itemView.getITEM_NAME() }<br> 제품 브랜드 :
-				${itemView.getITEM_BRAND() }<br>
+			<td class="firstTable">
+				제품 아이디 : ${itemView.getITEM_ID() }<br>
+				제품 이름 : ${itemView.getITEM_NAME() }<br> 
+				제품 브랜드 : ${itemView.getITEM_BRAND() }<br>
 			</td>
 		</tr>
 	</table>
@@ -95,20 +92,15 @@
 	<c:forEach var="reviewLists" items="${reviewLists }">
 		<table class="firstTable">
 			<tr class="firstTable">
-				<td class="firstTable"><a href="viewReview?REVIEW_ID=${reviewLists.REVIEW_ID }">
-						${reviewLists.REVIEW_CONTENT }</a></td>
-
+				<td class="firstTable">
+				<a href="viewReview?REVIEW_ID=${reviewLists.REVIEW_ID }">${reviewLists.REVIEW_CONTENT }</a>
+				</td>
 				<td class="firstTable">좋아요 갯수 : ${reviewLists.REVIEW_LIKE }<br>
-					<input type="button"
-					onclick="location.href='raiseLike?REVIEW_ID=${reviewLists.REVIEW_ID }&ITEM_ID=${itemView.getITEM_ID() }&MEM_ID=${sessionScope.session_id }&TARGET_MEM_ID=${reviewLists.MEM_ID }'"
-					value="좋아요 버튼">
+				<input type="button" onclick="location.href='raiseLike?REVIEW_ID=${reviewLists.REVIEW_ID }&ITEM_ID=${itemView.getITEM_ID() }&MEM_ID=${sessionScope.session_id }&TARGET_MEM_ID=${reviewLists.MEM_ID }'" value="좋아요 버튼">
 				</td>
 			</tr>
 		</table>
 	</c:forEach>
-
-
-
-
+	
 </body>
 </html>

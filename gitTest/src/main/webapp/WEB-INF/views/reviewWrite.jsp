@@ -56,30 +56,35 @@
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
 		<table id="secondTable">
 			<tr>
-				<td><select name="ITEM_CATEGORY">
+				<td>
+					<select name="ITEM_CATEGORY">
 						<option value="hair">헤어</option>
 						<option value="skincare">스킨케어</option>
 						<option value="cleansing">클렌징</option>
 						<option value="perfume">향수</option>
-				</select></td>
-				<td><input type="text" placeholder="검색어 입력" name="ITEM_NAME">
-					<input type="submit" value="검색"></td>
+					</select>
+				</td>
+				<td>
+					<input type="text" placeholder="검색어 입력" name="ITEM_NAME">
+					<input type="submit" value="검색">
+				</td>
 			</tr>
-
 		</table>
 	</form>
 	<br>
 	<br>
 
 	<form action="writeReviewForm" method="POST">
-		<input type="submit" value="리뷰등록"> &nbsp;&nbsp; <input
-			type="button" value="뒤로가기" onclick="goBack()"> <br> <br>
+		<input type="submit" value="리뷰등록"> &nbsp;&nbsp; 
+		<input type="button" value="뒤로가기" onclick="goBack()"> <br><br>
 		<input type="hidden" name="MEM_ID" value="${sessionScope.session_id }">
-		<input type="hidden" name="ITEM_ID"
-			value="<%=request.getParameter("ITEM_ID")%>"> 제목 : <input
-			type="text" name="REVIEW_TITLE"><br>
+		<input type="hidden" name="ITEM_ID" value="<%=request.getParameter("ITEM_ID")%>"> 
+		제목 : 
+		<input type="text" name="REVIEW_TITLE"><br>
 		<textarea rows="30" cols="50" name="REVIEW_CONTENT">글 내용을 작성하세요</textarea>
-		<br> 별점 : <select name="REVIEW_GRADE">
+		<br> 
+		별점 : 
+		<select name="REVIEW_GRADE">
 			<option value="1">1점</option>
 			<option value="2">2점</option>
 			<option value="3">3점</option>
@@ -87,6 +92,5 @@
 			<option value="5">5점</option>
 		</select><br>
 	</form>
-
 </body>
 </html>
