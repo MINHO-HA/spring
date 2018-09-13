@@ -168,6 +168,7 @@ public class ItemService {
 		
 		likedVO = new LikedVO();
 		likedVO = gitDAO.reviewsILiked(id);
+		
 		System.out.println("=========================");
 		System.out.println("====================="+likedVO.getREVIEW_ID());
 		System.out.println("=========================");
