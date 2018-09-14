@@ -45,6 +45,9 @@ ul {
 		<li>
 			<a href="listsIMarked?MEM_ID=${sessionScope.session_id }">제품 찜 목록</a>
 		</li>
+		<li>
+			<a href="follow">팔로워/팔로잉</a>
+		</li>
 	</ul>
 	<br>
 	<form action="modifyPersonalInfo?MEM_ID=${personalInfo.getMEM_ID() }" method="post">

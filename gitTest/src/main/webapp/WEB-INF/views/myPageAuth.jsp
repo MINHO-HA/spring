@@ -14,7 +14,6 @@ ul {
 </head>
 <body>
 	<h1>마이 페이지</h1>
-
 	<a href="./">logo(메인이동)</a>
 	<c:choose>
 		<c:when test="${not empty sessionScope.session_id }">
@@ -35,12 +34,12 @@ ul {
 	${sessionScope.session_id }님의 마이 페이지
 
 	<br>
-
 	<ul>
 		<li style="font-weight: bold;">개인정보 수정</li>
 		<li>내가 쓴 리뷰</li>
 		<li>좋아요 한 리뷰</li>
 		<li>제품 찜 목록</li>
+		<li>팔로워 / 팔로잉</li>
 	</ul>
 	<br> 비밀번호를 다시 한 번 입력해주세요.
 	<form action="passwordForCheck?MEM_ID=${sessionScope.session_id }"

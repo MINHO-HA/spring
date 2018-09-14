@@ -126,6 +126,11 @@
 	<select id="memInfo" parameterType="Member" resultType="Member">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
+	
+	<!-- 리뷰작성자 팔로잉시 리뷰 리스트 보기 -->
+	<select id="followReview" parameterType="Review" resultType="Review">
+		SELECT * FROM REVIEW WHERE MEM_ID = #{MEM_ID}
+	</select>
 </mapper>
 
 

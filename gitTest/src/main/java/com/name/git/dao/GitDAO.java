@@ -136,4 +136,9 @@ public class GitDAO {
 		return sqlSession.selectOne("Git.memInfo", mem_ID);
 	}
 
+	//리뷰작성자 팔로잉시 리뷰 보여주기
+	public List<ReviewVO> willFollow(String MEM_ID) {
+		return sqlSession.selectList("Git.followReview", MEM_ID);
+	}
+
 }

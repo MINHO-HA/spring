@@ -130,4 +130,14 @@ public class MemberController {
 		return modelAndView;
 	}
 	
+	//리뷰상세보기에서 아이디 클릭시 팔로우 처리
+	@RequestMapping(value="/checkFollow", method = RequestMethod.GET)
+	public ModelAndView checkFollow(@RequestParam("MEM_ID") String MEM_ID, @RequestParam("SESSION_ID") String SESSION_ID) {
+		
+		modelAndView = new ModelAndView();
+		modelAndView = memberService.checkFollow(MEM_ID, SESSION_ID);
+		
+		return modelAndView;
+	}
+	
 }

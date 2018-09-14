@@ -2,6 +2,7 @@ package com.name.git.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.dao.GitDAO;
 import com.name.git.vo.MemberVO;
+import com.name.git.vo.ReviewVO;
 
 @Service
 public class MemberService {
@@ -116,6 +118,23 @@ public class MemberService {
 			modelAndView.setViewName("main");
 		}
 
+		return modelAndView;
+	}
+
+	//리뷰 상세페이지에서 아이디 클릭시 팔로잉 처리
+	public ModelAndView checkFollow(String MEM_ID, String SESSION_ID) {
+		
+		modelAndView = new ModelAndView();
+		
+		if(MEM_ID.equals(SESSION_ID)) {
+			modelAndView.setViewName("main");
+		} else {
+			List<ReviewVO> list = gitDAO.willFollow(MEM_ID);
+			
+			modelAndView.addObject("followReview", list);
+			modelAndView.setViewName("follow");
+		}
+	
 		return modelAndView;
 	}
 
