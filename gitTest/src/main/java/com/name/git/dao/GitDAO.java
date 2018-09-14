@@ -24,36 +24,30 @@ public class GitDAO {
 		return sqlSession.insert("Git.memberJoin", memberVO);
 	}
 	
-	
 	//로그인 처리
 	public MemberVO memberLogin(MemberVO memberVO) {
 		return sqlSession.selectOne("Git.memberLogin", memberVO);
 	}
-	
 	
 	//개인정보 보기
 	public MemberVO personalInfo(String id) {
 		return sqlSession.selectOne("Git.personalInfo", id);
 	}
 	
-	
 	//개인정보 수정
 	public int modifyPersonalInfo(MemberVO memberVO) {
 		return sqlSession.update("Git.modifyPersonalInfo", memberVO);
 	}
-	
 	
 	//개인정보 보기 전 비밀번호입력 처리
 	public MemberVO passwordChecking(MemberVO memberVO) {
 		return sqlSession.selectOne("Git.passwordChecking", memberVO);
 	}
 	
-	
 	/*//검색시 따라오는 개인정보 처리
 	public MemberVO whenSearchingFollowingInfo(String id) {
 		return sqlSession.selectOne("Git.whenSearchingFollowingInfo", id);
 	}*/
-	
 	
 	//검색 결과 처리
 	public List<ItemVO> searchedResults(ItemVO itemVO) {
@@ -66,7 +60,6 @@ public class GitDAO {
 		return sqlSession.selectOne("Git.searchFilter", itemVO);
 	}
 	
-	
 	//검색 필터 처리(AGE)
 	public ItemVO searchFilter2(ItemVO itemVO) {
 		return sqlSession.selectOne("Git.searchFilter2", itemVO);
@@ -78,30 +71,25 @@ public class GitDAO {
 		return sqlSession.selectOne("Git.searchFilter3", itemVO);
 	}
 	
-	
 	//제품 상세 페이지 처리
 	public ItemVO viewItem(ReviewVO reviewVO) {
 		return sqlSession.selectOne("Git.viewItem", reviewVO);
 	}
-	
 	
 	//리뷰 작성 처리
 	public int writeReview(ReviewVO reviewVO) {
 		return sqlSession.insert("Git.writeReview", reviewVO);
 	}
 	
-	
 	//리뷰 목록 보기
 	public List<ReviewVO> reviewLists(ReviewVO reviewVO) {
 		return sqlSession.selectList("Git.reviewLists", reviewVO);
 	}
 	
-	
 	//내가 작성한 리뷰 보기
 	public List<ReviewVO> reviewsIWrote(ReviewVO reviewVO) {
 		return sqlSession.selectList("Git.reviewsIWrote", reviewVO);
 	}
-	
 	
 	//좋아요 올리기
 	public int raiseLike(ReviewVO reviewVO) {
@@ -138,14 +126,14 @@ public class GitDAO {
 		return sqlSession.selectList("Git.listsIMarked2", item_ID);
 	}
 
-
 	//리뷰 상세보기
 	public ReviewVO viewReview(int id) {
 		return sqlSession.selectOne("Git.viewReview", id);
 	}
 
-	
-		
-	
-	
+	//리뷰 상세보기(작성자 개인정보)
+	public MemberVO viewMemInfo(String mem_ID) {
+		return sqlSession.selectOne("Git.memInfo", mem_ID);
+	}
+
 }

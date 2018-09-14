@@ -50,7 +50,4 @@ public class LikedVO {
 		TARGET_MEM_ID = tARGET_MEM_ID;
 	}
 	
-	
-	
-	
 }

@@ -100,7 +100,5 @@ public class MemberVO {
 	public void setMEM_INFO(String mEM_INFO) {
 		MEM_INFO = mEM_INFO;
 	}
-
-	
 	
 }

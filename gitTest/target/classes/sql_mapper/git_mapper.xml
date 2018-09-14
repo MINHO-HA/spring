@@ -118,8 +118,14 @@
 	</select>
 	
 	<!-- 리뷰 상세보기 -->
-	<!-- <select id="viewReview"  -->
+	<select id="viewReview" parameterType="Review" resultType="Review">
+		SELECT * FROM REVIEW WHERE REVIEW_ID = #{REVIEW_ID}
+	</select>
 	
+	<!-- 리뷰 상세보기(멤버 개인정보) -->
+	<select id="memInfo" parameterType="Member" resultType="Member">
+		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
+	</select>
 </mapper>
 
 

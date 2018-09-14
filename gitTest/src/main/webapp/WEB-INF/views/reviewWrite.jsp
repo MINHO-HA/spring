@@ -12,14 +12,11 @@
 	}
 </script>
 <style>
-
-
 #secondTable {
 	margin: auto;
 	border: 1px solid black;
 	text-align: center;
 }
-
 </style>
 </head>
 <%

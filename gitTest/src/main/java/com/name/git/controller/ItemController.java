@@ -32,7 +32,6 @@ public class ItemController {
 	@Autowired
 	HttpSession session;
 	
-	
 	//메인에서 검색어 입력시 처리
 	@RequestMapping(value="/searchItem", method = RequestMethod.GET)
 	public ModelAndView searchingSth(@ModelAttribute ItemVO itemVO) {
@@ -42,7 +41,6 @@ public class ItemController {
 		
 		return modelAndView;
 	}
-	
 	
 	//검색필터 처리
 	@RequestMapping(value="/searchFilter", method = RequestMethod.GET)
@@ -54,8 +52,6 @@ public class ItemController {
 		return modelAndView;
 	}
 	
-	
-	
 	//제품 상세 페이지(이미지 클릭시)
 	@RequestMapping(value="/viewItem", method = RequestMethod.GET)
 	public ModelAndView viewItem(@ModelAttribute ReviewVO reviewVO) {
@@ -66,16 +62,12 @@ public class ItemController {
 		return modelAndView;
 	}
 	
-	
-	
 	//리뷰작성 페이지로 이동
 	@RequestMapping(value = "/reviewForm" ,  method = RequestMethod.GET)
 	public String writeReview() {
 		
 		return "reviewWrite";
 	}
-	
-	
 	
 	//리뷰 작성
 	@RequestMapping(value="/writeReviewForm", method = RequestMethod.POST)
@@ -87,8 +79,6 @@ public class ItemController {
 		return modelAndView;
 	}
 	
-	
-	
 	//내가 쓴 리뷰 
 	@RequestMapping(value="/reviewsIWrote", method = RequestMethod.GET)
 	public ModelAndView reviewsIWrote(@ModelAttribute ReviewVO reviewVO) {
@@ -98,8 +88,6 @@ public class ItemController {
 		
 		return modelAndView;
 	}
-	
-	
 	
 	//리뷰 좋아요 올리기
 	@RequestMapping(value="/raiseLike", method = RequestMethod.GET)
@@ -111,8 +99,6 @@ public class ItemController {
 		return modelAndView;
 	}
 	
-	
-	
 	//내가 좋아요한 리뷰
 	@RequestMapping(value="/reviewsILiked", method = RequestMethod.GET)
 	public ModelAndView reviewsILiked(@RequestParam("TARGET_MEM_ID") String id) {
@@ -122,8 +108,6 @@ public class ItemController {
 		
 		return modelAndView;
 	}
-	
-	
 	
 	//찜하기
 	@RequestMapping(value="/markItem", method = RequestMethod.GET)
@@ -135,8 +119,6 @@ public class ItemController {
 		return modelAndView;
 	}
 	
-	
-	
 	//내가 찜한 목록 보기(평균별점 추가해야함!)
 	@RequestMapping(value="/listsIMarked", method = RequestMethod.GET)
 	public ModelAndView listsIMarked(@RequestParam("MEM_ID") String id) {
@@ -146,8 +128,6 @@ public class ItemController {
 		
 		return modelAndView;
 	}
-	
-	
 	
 	//리뷰 상세보기
 	@RequestMapping(value="/viewReview", method = RequestMethod.GET)

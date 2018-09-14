@@ -28,8 +28,6 @@ public class MemberController {
 	@Autowired
 	HttpSession session;
 	
-	
-	
 	//제일 처음 띄울 페이지
 	@RequestMapping(value = "/" ,  method = RequestMethod.GET)
 	public String main() {
@@ -37,17 +35,13 @@ public class MemberController {
 		return "main";	
 	}
 	
-	
-	
 	//회원가입 페이지로 이동
 	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
 	public String signUp() {
 		
 		return "signUp";
 	}
-		
-		
-		
+			
 	//회원가입 페이지
 	@RequestMapping(value = "/joinForm", method = RequestMethod.POST)
 	public ModelAndView join(@ModelAttribute MemberVO memberVO) {
@@ -71,16 +65,12 @@ public class MemberController {
 		return modelAndView;
 	}	
 		
-		
-		
 	//로그인 페이지
 	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
 	public String login() {
 		
 		return "loginPage";	
 	}
-	
-	
 	
 	//로그인 처리
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -91,8 +81,6 @@ public class MemberController {
 			
 		return modelAndView;	
 	}
-	
-	
 	
 	//로그아웃 처리
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -112,8 +100,6 @@ public class MemberController {
 		return "myPageAuth";	
 	}
 	
-	
-	
 	//마이페이지에서 비밀번호 확인
 	@RequestMapping(value = "/passwordForCheck", method = RequestMethod.POST)
 	public ModelAndView passwordChecking(@ModelAttribute MemberVO memberVO, HttpServletResponse response) throws IOException {
@@ -123,8 +109,6 @@ public class MemberController {
 		
 		return modelAndView;
 	}
-	
-	
 	
 	//개인정보 보기
 	@RequestMapping(value="/personalInfo", method = RequestMethod.GET)
@@ -136,8 +120,6 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	
-	
 	//개인정보 변경 처리
 	@RequestMapping(value="/modifyPersonalInfo", method = RequestMethod.POST)
 	public ModelAndView modifyPersonalInfo(@ModelAttribute MemberVO memberVO) {
@@ -147,6 +129,5 @@ public class MemberController {
 		
 		return modelAndView;
 	}
-	
 	
 }
