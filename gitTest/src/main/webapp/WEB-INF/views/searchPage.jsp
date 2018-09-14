@@ -77,15 +77,6 @@
 		</table>
 	</form>
 
-
-
-
-
-
-
-
-
-
 	<h2>&lt;Result&gt;</h2>
 	<table class="firstTable">
 		<tr>

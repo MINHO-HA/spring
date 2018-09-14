@@ -30,7 +30,6 @@
 	<c:choose>
 		<c:when test="${not empty sessionScope.session_id }">
 			<c:choose>
-
 				<c:when test="${sessionScope.session_id eq 'admin'}">
 					<div style="float: right;">관리자님 환영합니다.</div>
 				</c:when>
@@ -71,7 +70,7 @@
 	<br>
 	<br>
 	<div id="a">
-		<input type="button" onclick="location.href='raiseLike?REVIEW_ID=${viewReview.REVIEW_ID }&ITEM_ID=${viewReview.ITEM_ID }&MEM_ID=${sessionScope.session_id }&TARGET_MEM_ID=${reviewLists.MEM_ID }'" value="좋아요 버튼"> &nbsp;&nbsp; 
+		<input type="button" onclick="location.href='raiseLike?REVIEW_ID=${viewReview.REVIEW_ID }&ITEM_ID=${viewReview.ITEM_ID }&MEM_ID=${sessionScope.session_id }&TARGET_MEM_ID=${reviewLists.MEM_ID }'" value="리뷰 추천"> &nbsp;&nbsp; 
 		<input type="button" value="뒤로가기" onclick="goBack()">
 	</div>
 	<br><br>
