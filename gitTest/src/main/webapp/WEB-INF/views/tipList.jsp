@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+팁 리스트
 </body>
 </html>
