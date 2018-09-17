@@ -88,6 +88,22 @@ CREATE TABLE FOLLOW(
 );
 
 
+10)초기에 넣을 테이더 값
+insert into skintype values(1);
+insert into skintype values(2);
+insert into skintype values(3);
+insert into skintype values(4);
+insert into skintype values(5);
+insert into skintype values(6);
+
+insert into gender values(1);
+insert into gender values(2);
+
+insert into age values(1);
+insert into age values(2);
+insert into age values(3);
+insert into age values(4);
+insert into age values(5);
 
 
 

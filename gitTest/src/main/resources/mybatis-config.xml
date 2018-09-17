@@ -3,11 +3,11 @@
 
 <configuration>
 	<typeAliases>
-		<typeAlias alias="Member" type="com.name.git.vo.MemberVO" />
-		<typeAlias alias="Item" type="com.name.git.vo.ItemVO" />
-		<typeAlias alias="Review" type="com.name.git.vo.ReviewVO" />
-		<typeAlias alias="Liked" type="com.name.git.vo.LikedVO" />
-		<typeAlias alias="Selected" type="com.name.git.vo.SelectedVO" />
+		<typeAlias alias="MEMBER" type="com.name.git.vo.MemberVO" />
+		<typeAlias alias="ITEM" type="com.name.git.vo.ItemVO" />
+		<typeAlias alias="REVIEW" type="com.name.git.vo.ReviewVO" />
+		<typeAlias alias="LIKED" type="com.name.git.vo.LikedVO" />
+		<typeAlias alias="SELECTED" type="com.name.git.vo.SelectedVO" />
 	</typeAliases>
 </configuration>
 

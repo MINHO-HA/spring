@@ -4,27 +4,27 @@
 <mapper namespace="Git">
 
 	<!-- 회원가입 -->
-	<insert id="memberJoin" parameterType="Member">
+	<insert id="memberJoin" parameterType="MEMBER">
 		INSERT INTO MEMBER VALUES(#{MEM_ID}, #{MEM_PW}, #{MEM_NAME}, #{MEM_AGE}, #{MEM_EMAIL}, #{GENDER_ID}, #{SKINTYPE_ID}, #{AGE_ID} ,#{MEM_INFO})
 	</insert>
 	
 	<!-- 로그인 -->
-	<select id="memberLogin" parameterType="Member" resultType="Member">
+	<select id="memberLogin" parameterType="MEMBER" resultType="MEMBER">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
 	
 	<!-- 개인정보 보기 -->
-	<select id="personalInfo" parameterType="Member" resultType="Member">
+	<select id="personalInfo" parameterType="MEMBER" resultType="MEMBER">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
 
 	<!-- 개인정보 수정 -->
-	<update id="modifyPersonalInfo" parameterType="Member">
+	<update id="modifyPersonalInfo" parameterType="MEMBER">
 		UPDATE MEMBER SET MEM_NAME = #{MEM_NAME}, MEM_AGE = #{MEM_AGE}, MEM_EMAIL = #{MEM_EMAIL}, GENDER_ID = #{GENDER_ID}, SKINTYPE_ID = #{SKINTYPE_ID}, MEM_STATE = #{MEM_STATE} WHERE MEM_ID = #{MEM_ID}
 	</update>
 	
 	<!-- 개인정보 비밀번호 확인 -->
-	<select id="passwordChecking" parameterType="Member" resultType="Member">
+	<select id="passwordChecking" parameterType="MEMBER" resultType="MEMBER">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
 	
@@ -34,32 +34,32 @@
 	</select> -->
 
 	<!-- 메인에서 검색 쿼리문 -->
-	<select id="searchedResults" parameterType="Item" resultType="Item">
+	<select id="searchedResults" parameterType="ITEM" resultType="ITEM">
 		SELECT * FROM ITEM WHERE ITEM_CATEGORY = #{ITEM_CATEGORY} AND (ITEM_NAME LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_BRAND LIKE '%' || #{ITEM_NAME} || '%' OR ITEM_ID LIKE '%' || #{ITEM_NAME} || '%')
 	</select>
 	
 	<!-- 검색 필터 처리(GENDER) -->
-	<select id="searchFilter" parameterType="Item" resultType="Item">
+	<select id="searchFilter" parameterType="ITEM" resultType="ITEM">
 		SELECT * FROM ITEM WHERE GENDER_ID = #{GENDER_ID}
 	</select>
 	
 	<!-- 검색 필터 처리(AGE) -->
-	<select id="searchFilter2" parameterType="Item" resultType="Item">
+	<select id="searchFilter2" parameterType="ITEM" resultType="ITEM">
 		SELECT * FROM ITEM WHERE AGE_ID = #{AGE_ID}
 	</select>
 	
 	<!-- 검색 필터 처리(SKINTYPE) -->
-	<select id="searchFilter3" parameterType="Item" resultType="Item">
+	<select id="searchFilter3" parameterType="ITEM" resultType="ITEM">
 		SELECT * FROM ITEM WHERE SKINTYPE_ID = #{SKINTYPE_ID}
 	</select>
 
 	<!-- 제품상세 -->
-	<select id="viewItem" parameterType="Item" resultType="Item">
+	<select id="viewItem" parameterType="ITEM" resultType="ITEM">
 		SELECT * FROM ITEM WHERE ITEM_ID = #{ITEM_ID}
 	</select>
 	
 	<!-- 리뷰작성 -->
-	<insert id="writeReview" parameterType="Review">
+	<insert id="writeReview" parameterType="REVIEW">
 		INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL, #{MEM_ID}, #{REVIEW_TITLE}, #{REVIEW_CONTENT}, #{ITEM_ID}, 0, #{REVIEW_GRADE})
 		<selectKey keyProperty="REVIEW_ID" resultType="int" order="AFTER">
 			SELECT REVIEW_SEQ.CURRVAL FROM DUAL
@@ -67,22 +67,22 @@
 	</insert>
 	
 	<!-- 리뷰 리스트 -->
-	<select id="reviewLists" parameterType="Review" resultType="Review">
+	<select id="reviewLists" parameterType="REVIEW" resultType="REVIEW">
 		SELECT * FROM REVIEW WHERE ITEM_ID = #{ITEM_ID}
 	</select>
 	
 	<!-- 내가 작성한 리뷰 리스트 -->
-	<select id="reviewsIWrote" parameterType="Review" resultType="Review">
+	<select id="reviewsIWrote" parameterType="REVIEW" resultType="REVIEW">
 		SELECT * FROM REVIEW WHERE MEM_ID = #{MEM_ID}
 	</select>
 	
 	<!-- 좋아요 올리기 쿼리 -->
-	<update id="raiseLike" parameterType="int">
+	<update id="raiseLike" parameterType="INT">
 		UPDATE REVIEW SET REVIEW_LIKE = REVIEW_LIKE +1 WHERE REVIEW_ID = #{REVIEW_ID}
 	</update> 
 	
 	<!-- 좋아요 올렸을 때 Liked 테이블 insert -->
-	<insert id="raiseLike2" parameterType="LIked">
+	<insert id="raiseLike2" parameterType="LIKED">
 		INSERT INTO LIKED VALUES(LIKED_SEQ.NEXTVAL, #{REVIEW_ID}, #{TARGET_MEM_ID}, #{MEM_ID})
 		<selectKey keyProperty="LIKE_ID" resultType="int" order="AFTER">
 			SELECT LIKED_SEQ.CURRVAL FROM DUAL
@@ -90,17 +90,17 @@
 	</insert>
 	
 	<!-- 내가 좋아요한 리뷰보기 (TARGET_ID로 LIKE_ID 값 구하기) -->
-	<select id="reviewsILiked" parameterType="Liked" resultType="Liked">
+	<select id="reviewsILiked" parameterType="LIKED" resultType="LIKED">
 		SELECT REVIEW_ID FROM LIKED WHERE TARGET_MEM_ID = #{TARGET_MEM_ID}
 	</select>
 	
 	<!-- 내가 좋아요한 리뷰보기 (리스트로 리턴) -->
-	<select id="reviewsILiked2" parameterType="Review" resultType="Review">
+	<select id="reviewsILiked2" parameterType="REVIEW" resultType="REVIEW">
 		SELECT * FROM REVIEW WHERE REVIEW_ID = #{REVIEW_ID}
 	</select>
 	
 	<!-- 찜하기 -->
-	<insert id="markItem" parameterType="Selected">
+	<insert id="markItem" parameterType="SELECTED">
 		INSERT INTO SELECTED VALUES(SELECTED_SEQ.NEXTVAL, #{ITEM_ID}, #{MEM_ID})
 		<selectKey keyProperty="SEL_ID" resultType="int" order="AFTER">
 			SELECT SELECTED_SEQ.CURRVAL FROM DUAL
@@ -108,27 +108,27 @@
 	</insert>
 	
 	<!-- 내가 찜한 리뷰보기 (MEM_ID로 ITEM_ID 값 구하기) -->
-	<select id="listsIMarked" parameterType="Selected" resultType="Selected">
+	<select id="listsIMarked" parameterType="SELECTED" resultType="SELECTED">
 		SELECT ITEM_ID FROM SELECTED WHERE MEM_ID = #{MEM_ID}
 	</select>
 	
 	<!-- 내가 찜한 리뷰보기 (리스트로 리턴)-->
-	<select id="listsIMarked2" parameterType="Item" resultType="Item">
+	<select id="listsIMarked2" parameterType="ITEM" resultType="ITEM">
 		SELECT * FROM ITEM WHERE ITEM_ID = #{ITEM_ID}
 	</select>
 	
 	<!-- 리뷰 상세보기 -->
-	<select id="viewReview" parameterType="Review" resultType="Review">
+	<select id="viewReview" parameterType="REVIEW" resultType="REVIEW">
 		SELECT * FROM REVIEW WHERE REVIEW_ID = #{REVIEW_ID}
 	</select>
 	
 	<!-- 리뷰 상세보기(멤버 개인정보) -->
-	<select id="memInfo" parameterType="Member" resultType="Member">
+	<select id="memInfo" parameterType="MEMBER" resultType="MEMBER">
 		SELECT * FROM MEMBER WHERE MEM_ID = #{MEM_ID}
 	</select>
 	
 	<!-- 리뷰작성자 팔로잉시 리뷰 리스트 보기 -->
-	<select id="followReview" parameterType="Review" resultType="Review">
+	<select id="followReview" parameterType="REVIEW" resultType="REVIEW">
 		SELECT * FROM REVIEW WHERE MEM_ID = #{MEM_ID}
 	</select>
 </mapper>
