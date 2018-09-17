@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.service.MemberService;
+import com.name.git.vo.FollowVO;
 import com.name.git.vo.MemberVO;
 
 
@@ -132,10 +133,10 @@ public class MemberController {
 	
 	//리뷰상세보기에서 아이디 클릭시 팔로우 처리
 	@RequestMapping(value="/checkFollow", method = RequestMethod.GET)
-	public ModelAndView checkFollow(@RequestParam("MEM_ID") String MEM_ID, @RequestParam("SESSION_ID") String SESSION_ID) {
+	public ModelAndView checkFollow(@ModelAttribute FollowVO followVO) {
 		
 		modelAndView = new ModelAndView();
-		modelAndView = memberService.checkFollow(MEM_ID, SESSION_ID);
+		modelAndView = memberService.checkFollow(followVO);
 		
 		return modelAndView;
 	}

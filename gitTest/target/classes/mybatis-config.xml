@@ -8,6 +8,7 @@
 		<typeAlias alias="REVIEW" type="com.name.git.vo.ReviewVO" />
 		<typeAlias alias="LIKED" type="com.name.git.vo.LikedVO" />
 		<typeAlias alias="SELECTED" type="com.name.git.vo.SelectedVO" />
+		<typeAlias alias="FOLLOW" type="com.name.git.vo.FollowVO" />
 	</typeAliases>
 </configuration>
 

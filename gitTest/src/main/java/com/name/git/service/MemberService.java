@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.name.git.dao.GitDAO;
+import com.name.git.vo.FollowVO;
 import com.name.git.vo.MemberVO;
 import com.name.git.vo.ReviewVO;
 
@@ -122,15 +123,18 @@ public class MemberService {
 	}
 
 	//리뷰 상세페이지에서 아이디 클릭시 팔로잉 처리
-	public ModelAndView checkFollow(String MEM_ID, String SESSION_ID) {
+	public ModelAndView checkFollow(FollowVO followVO) {
 		
 		modelAndView = new ModelAndView();
 		
-		if(MEM_ID.equals(SESSION_ID)) {
+		//팔로잉처리
+		int result = gitDAO.checkFollow(followVO);
+		
+		if(followVO.getTARGET_MEM_ID().equals(followVO.getMEM_ID())) {
 			modelAndView.setViewName("main");
 		} else {
-			List<ReviewVO> list = gitDAO.willFollow(MEM_ID);
-			
+			List<ReviewVO> list = gitDAO.willFollow(followVO.getTARGET_MEM_ID());
+			modelAndView.addObject(result);
 			modelAndView.addObject("followReview", list);
 			modelAndView.setViewName("follow");
 		}

@@ -81,7 +81,7 @@
 			</td>
 			<td>
 				작성자 : 	
-						<a href="checkFollow?MEM_ID=${memInfo.MEM_ID }&SESSION_ID=${sessionScope.session_id }">${memInfo.MEM_NAME } </a> / 
+						<a href="checkFollow?TARGET_MEM_ID=${memInfo.MEM_ID }&MEM_ID=${sessionScope.session_id }">${memInfo.MEM_NAME } </a> / 
 				<c:choose>
 					<c:when test="${memInfo.GENDER_ID == 1 }">
 						남 / 

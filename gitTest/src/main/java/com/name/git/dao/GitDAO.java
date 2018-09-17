@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.name.git.vo.FollowVO;
 import com.name.git.vo.ItemVO;
 import com.name.git.vo.LikedVO;
 import com.name.git.vo.MemberVO;
@@ -139,6 +140,11 @@ public class GitDAO {
 	//리뷰작성자 팔로잉시 리뷰 보여주기
 	public List<ReviewVO> willFollow(String MEM_ID) {
 		return sqlSession.selectList("Git.followReview", MEM_ID);
+	}
+
+	//팔로우 처리
+	public int checkFollow(FollowVO followVO) {
+		return sqlSession.insert("Git.checkFollow", followVO);
 	}
 
 }
