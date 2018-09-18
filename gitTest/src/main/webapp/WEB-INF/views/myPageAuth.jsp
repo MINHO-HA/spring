@@ -13,6 +13,7 @@ ul {
 </style>
 </head>
 <body>
+	<%@include file="navbar.jsp" %>
 	<h1>마이 페이지</h1>
 	<a href="./">logo(메인이동)</a>
 	<c:choose>

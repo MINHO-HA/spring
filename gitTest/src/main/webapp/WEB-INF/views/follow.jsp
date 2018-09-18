@@ -32,37 +32,48 @@
 	</c:choose>
 	<br>
 	<br>
-	<c:forEach var="followReview" items="${followReview }">
-		<table>
-			<tr>
-				<td>
-					리뷰 번호
-				</td>
-				<td>
-					리뷰 제목
-				</td>
-				<td>
-					좋아요 수
-				</td>
-				<td>
-					내가 준 별점
-				</td>
-			</tr>
-			<tr>
-				<td>
-					${followReview.REVIEW_ID }
-				</td>
-				<td>
-					${followReview.REVIEW_TITLE }
-				</td>
-				<td>
-					${followReview.REVIEW_LIKE }
-				</td>
-				<td>
-					${followReview.REVIEW_GRADE }
-				</td>
-			</tr>
-		</table>
-	</c:forEach>
+	
+	<c:choose>
+		<c:when test="${check eq 'B'}">
+			<c:forEach var="followReview" items="${followReview }">
+				<table>
+					<tr>
+						<td>
+							리뷰 번호
+						</td>
+						<td>
+							리뷰 제목
+						</td>
+						<td>
+							좋아요 수
+						</td>
+						<td>
+							내가 준 별점
+						</td>
+					</tr>
+					<tr>
+						<td>
+							${followReview.REVIEW_ID }
+						</td>
+						<td>
+							${followReview.REVIEW_TITLE }
+						</td>
+						<td>
+							${followReview.REVIEW_LIKE }
+						</td>
+						<td>
+							${followReview.REVIEW_GRADE }
+						</td>
+					</tr>
+				</table>
+			</c:forEach>
+		</c:when>
+		<c:when test="${check eq 'A'}">
+			<a href="checkFollow2?TARGET_MEM_ID=${followVO.TARGET_MEM_ID }&MEM_ID=${sessionScope.session_id }">팔로우할께요</a>
+		</c:when>
+		<c:otherwise>
+			<h1>확인용 if문 else 케이스</h1>
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>

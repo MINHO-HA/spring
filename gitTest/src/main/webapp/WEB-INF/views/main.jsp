@@ -19,6 +19,7 @@
 </head>
 <body>
 	<h1>메인 페이지</h1>
+	<a href="/signUp">회원가입 페이지</a>
 	<hr>
 	<a href="./">LOGO</a>
 	<c:choose>

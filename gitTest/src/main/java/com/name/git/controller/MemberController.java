@@ -92,8 +92,6 @@ public class MemberController {
 		return "main";
 	}
 	
-	
-	
 	//마이 페이지
 	@RequestMapping(value = "/myPage", method = RequestMethod.GET)
 	public String myPage() {
@@ -131,7 +129,7 @@ public class MemberController {
 		return modelAndView;
 	}
 	
-	//리뷰상세보기에서 아이디 클릭시 팔로우 처리
+	//리뷰상세보기에서 팔로잉 여부 확인
 	@RequestMapping(value="/checkFollow", method = RequestMethod.GET)
 	public ModelAndView checkFollow(@ModelAttribute FollowVO followVO) {
 		
@@ -141,4 +139,13 @@ public class MemberController {
 		return modelAndView;
 	}
 	
+	//리뷰상세보기에서 아이디 클릭시 팔로우 처리
+	@RequestMapping(value="/checkFollow2", method = RequestMethod.GET)
+	public ModelAndView checkFollow2(@ModelAttribute FollowVO followVO) {
+		System.out.println("팔로우버튼!!!!!!!!!!!!!!!!!!");
+		modelAndView = new ModelAndView();
+		modelAndView = memberService.checkFollow2(followVO);
+		
+		return modelAndView;
+	}
 }

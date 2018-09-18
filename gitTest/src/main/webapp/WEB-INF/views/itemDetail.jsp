@@ -25,6 +25,7 @@
 </style>
 </head>
 <body>
+	<%@include file="navbar.jsp" %>
 	<h1>제품 상세 페이지</h1>
 	<hr>
 	<a href="./">LOGO</a>

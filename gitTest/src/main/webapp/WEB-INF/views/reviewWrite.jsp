@@ -23,6 +23,7 @@
 	request.getParameter("ITEM_ID");
 %>
 <body>
+	<%@include file="navbar.jsp" %>
 	<h1>리뷰 작성 페이지</h1>
 
 	<hr>

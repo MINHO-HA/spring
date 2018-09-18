@@ -122,23 +122,52 @@ public class MemberService {
 		return modelAndView;
 	}
 
-	//리뷰 상세페이지에서 아이디 클릭시 팔로잉 처리
+	//리뷰 상세페이지에서 팔로잉 확인
 	public ModelAndView checkFollow(FollowVO followVO) {
 		
 		modelAndView = new ModelAndView();
+
+		System.out.println("++++++++++++");
+		System.out.println("targetID : "+followVO.getTARGET_MEM_ID());
+		System.out.println("memID : "+followVO.getMEM_ID());
+		System.out.println("++++++++++++");
 		
-		//팔로잉처리
-		int result = gitDAO.checkFollow(followVO);
-		
-		if(followVO.getTARGET_MEM_ID().equals(followVO.getMEM_ID())) {
-			modelAndView.setViewName("main");
+		//팔로잉 먼저 확인
+		String checkIfFollow = gitDAO.checkIfFollow(followVO);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println(checkIfFollow);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		//팔로잉 안되어 있을시
+		if(checkIfFollow == null) {
+			System.out.println("++++++++++++++++++++++");
+			System.out.println("if 케이스!!");
+			System.out.println("++++++++++++++++++++++");
+			String check = "A";
+			modelAndView.addObject("check", check);
+			modelAndView.addObject("followVO", followVO);
+			modelAndView.setViewName("follow");
 		} else {
+			System.out.println("++++++++++++++++++++++");
+			System.out.println("else 케이스!!");
+			System.out.println("++++++++++++++++++++++");
+			String check = "B";
+			modelAndView.addObject("check", check);
 			List<ReviewVO> list = gitDAO.willFollow(followVO.getTARGET_MEM_ID());
-			modelAndView.addObject(result);
 			modelAndView.addObject("followReview", list);
 			modelAndView.setViewName("follow");
 		}
 	
+		return modelAndView;
+	}
+
+	//리뷰 상세페이지에서 버튼 클릭시 팔로잉 처리
+	public ModelAndView checkFollow2(FollowVO followVO) {
+
+		modelAndView = new ModelAndView();
+		
+		gitDAO.checkFollow(followVO);
+		modelAndView.setViewName("redirect:/checkFollow?TARGET_MEM_ID="+followVO.getTARGET_MEM_ID()+"&MEM_ID="+followVO.getMEM_ID());
+		
 		return modelAndView;
 	}
 

@@ -127,6 +127,11 @@
 	<insert id="checkFollow" parameterType="FOLLOW">
 		INSERT INTO FOLLOW(TARGET_MEM_ID, MEM_ID) VALUES(#{TARGET_MEM_ID}, #{MEM_ID})
 	</insert>
+	
+	<!-- 팔로우 여부 확인 -->
+	<select id="checkIfFollow" parameterType="FOLLOW" resultType="String">
+		SELECT ifnull(FOLLOW_ID, 0) FROM FOLLOW WHERE TARGET_MEM_ID = #{TARGET_MEM_ID} AND MEM_ID = #{MEM_ID}
+	</select>
 </mapper>
 
 

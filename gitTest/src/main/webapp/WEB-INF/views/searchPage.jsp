@@ -28,6 +28,7 @@
 </style>
 </head>
 <body>
+	<%@include file="navbar.jsp" %>
 	<h1>검색결과 페이지</h1>
 	<hr>
 

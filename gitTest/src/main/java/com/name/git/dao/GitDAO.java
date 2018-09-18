@@ -147,4 +147,9 @@ public class GitDAO {
 		return sqlSession.insert("Git.checkFollow", followVO);
 	}
 
+	//팔로잉 여부 먼저 확인
+	public String checkIfFollow(FollowVO followVO) {
+		return sqlSession.selectOne("Git.checkIfFollow", followVO);
+	}
+
 }

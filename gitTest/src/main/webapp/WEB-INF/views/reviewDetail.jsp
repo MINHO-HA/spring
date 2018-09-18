@@ -23,6 +23,7 @@
 </script>
 </head>
 <body>
+	<%@include file="navbar.jsp" %>
 	<h1>리뷰 상세 페이지</h1>
 
 	<hr>
