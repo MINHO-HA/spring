@@ -37,15 +37,8 @@ public class ItemService {
 		
 		modelAndView = new ModelAndView();
 		
-		/*memberVO = new MemberVO();
-		memberVO = gitDAO.whenSearchingFollowingInfo(id);*/
-		System.out.println("검색시++++++++++++++++++");
-		System.out.println(itemVO.getITEM_NAME());
-		System.out.println(itemVO.getITEM_CATEGORY());
-		System.out.println("검색시++++++++++++++++++");
 		List<ItemVO> list = gitDAO.searchedResults(itemVO);
 		
-		/*modelAndView.addObject("personalInfo", memberVO);*/
 		modelAndView.addObject("searchKeyword", list);
 		modelAndView.setViewName("searchPage");
 		
@@ -75,7 +68,6 @@ public class ItemService {
 		System.out.println("검색어 : "+itemVO2.getITEM_NAME());
 		System.out.println("==========");
 		
-		/*modelAndView.setViewName("redirect:/searchItem?GENDER_ID="+itemVO.getGENDER_ID()+"&AGE_ID="+itemVO.getAGE_ID()+"&SKINTYPE_ID="+itemVO.getSKINTYPE_ID());*/
 		modelAndView.setViewName("redirect:/searchItem?ITEM_CATEGORY="+itemVO2.getITEM_CATEGORY()+"&ITEM_NAME="+itemVO2.getITEM_NAME());
 		
 		return modelAndView;

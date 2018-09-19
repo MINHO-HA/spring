@@ -80,7 +80,6 @@ public class MemberService {
 		if (memberVO.getMEM_PW().equals(password.getMEM_PW())) {
 			modelAndView.addObject("myPageCheck", memberVO);
 			modelAndView.setViewName("redirect:/personalInfo?id=" + memberVO.getMEM_ID());
-			/* modelAndView.setViewName("myPage"); */
 		} else {
 			out.println("<script>");
 			out.println("alert('비밀번호가 틀립니다.');");
@@ -126,32 +125,21 @@ public class MemberService {
 	public ModelAndView checkFollow(FollowVO followVO) {
 		
 		modelAndView = new ModelAndView();
-
-		System.out.println("++++++++++++");
-		System.out.println("targetID : "+followVO.getTARGET_MEM_ID());
-		System.out.println("memID : "+followVO.getMEM_ID());
-		System.out.println("++++++++++++");
 		
 		//팔로잉 먼저 확인
 		String checkIfFollow = gitDAO.checkIfFollow(followVO);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println(checkIfFollow);
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		
 		//팔로잉 안되어 있을시
 		if(checkIfFollow == null) {
-			System.out.println("++++++++++++++++++++++");
-			System.out.println("if 케이스!!");
-			System.out.println("++++++++++++++++++++++");
 			String check = "A";
 			modelAndView.addObject("check", check);
+			
 			modelAndView.addObject("followVO", followVO);
 			modelAndView.setViewName("follow");
 		} else {
-			System.out.println("++++++++++++++++++++++");
-			System.out.println("else 케이스!!");
-			System.out.println("++++++++++++++++++++++");
 			String check = "B";
 			modelAndView.addObject("check", check);
+			
 			List<ReviewVO> list = gitDAO.willFollow(followVO.getTARGET_MEM_ID());
 			modelAndView.addObject("followReview", list);
 			modelAndView.setViewName("follow");
